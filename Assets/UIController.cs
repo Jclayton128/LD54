@@ -16,7 +16,9 @@ public class UIController : MonoBehaviour
     [SerializeField] PanelDriver[] _panels = null;
     [SerializeField] PanelDriver _creditsPanel = null;
     [SerializeField] PanelDriver _titlePanel = null;
-    [SerializeField] PanelDriver _upgradePanel = null;
+    [SerializeField] PanelDriver[] _attackPanels = null;
+    [SerializeField] PanelDriver[] _rotatePanels = null;
+    [SerializeField] PanelDriver[] _upgradePanel = null;
     [SerializeField] PanelDriver _endPanel = null;
     [SerializeField] RotationHandler _earthRotationHandler = null;
 
@@ -92,16 +94,31 @@ public class UIController : MonoBehaviour
 
             case Mode.Rotate:
                 GameController.Instance.StartGameMode();
+                foreach (var panel in _rotatePanels)
+                {
+                    panel.ShowHidePanel(true);
+                }
                 _canRotate = true;
                 break;
 
             case Mode.Upgrade:
                 _canRotate = true;
-                _upgradePanel.ShowHidePanel(true);
+                foreach (var panel in _rotatePanels)
+                {
+                    panel.ShowHidePanel(true);
+                }
+                foreach (var panel in _upgradePanel)
+                {
+                    panel.ShowHidePanel(true);
+                }
                 break;
 
             case Mode.Attack:
                 _canRotate = false;
+                foreach (var panel in _attackPanels)
+                {
+                    panel.ShowHidePanel(true);
+                }
                 break;
 
             case Mode.End:

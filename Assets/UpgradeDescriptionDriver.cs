@@ -18,6 +18,7 @@ public class UpgradeDescriptionDriver : MonoBehaviour
         _name.text = brochure.SName;
         _description.text = brochure.Description;
         _icon.sprite = brochure.Icon;
+        //Debug.Log($"min cost: {brochure.MineralCost}");
 
         if (isSameThing)
         {

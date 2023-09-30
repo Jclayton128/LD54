@@ -16,6 +16,7 @@ public class StructureHandler : MonoBehaviour
     private void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();
+        _upgradeOptions[0] = _structureType;
     }
  
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3292215788497756916
+--- !u!1001 &2875979707600009172
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -18,30 +18,18 @@ PrefabInstance:
     - target: {fileID: 1843681802896403311, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1188748577, guid: 8a79222a3b591d342a2a972651fb083f, type: 3}
+      objectReference: {fileID: 655544551, guid: 8a79222a3b591d342a2a972651fb083f, type: 3}
     - target: {fileID: 1843681802896403311, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3700383667429040947, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _structureType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700383667429040947, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
-      propertyPath: _upgradeOptions.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700383667429040947, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
-      propertyPath: _upgradeOptions.Array.data[1]
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3700383667429040947, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
-      propertyPath: _upgradeOptions.Array.data[2]
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700383667429040947, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
-      propertyPath: _upgradeOptions.Array.data[3]
-      value: 12
+      propertyPath: _upgradeOptions.Array.data[5]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5969638264062284320, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_RootOrder
@@ -89,19 +77,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _desc
-      value: Slowly grows food.
+      value: Middle A branch
       objectReference: {fileID: 0}
     - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _name
-      value: Basic Farm
+      value: Farm_mid_A
       objectReference: {fileID: 0}
     - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _mineralCost
-      value: 20
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
+      propertyPath: _scienceCost
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8971041557948222407, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_Name
-      value: Structure_Farm_basic
+      value: Structure_Farm_middle_A
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}

@@ -22,6 +22,12 @@ public class RotationHandler : MonoBehaviour
     //    else UIController.Instance.EarthRotationRequired -= HandleRotationCommanded;
     //}
 
+    public void ResetRotation()
+    {
+        _rotateTween.Kill();
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     public void CommandRotation(int dir)
     {
         if (_isMoving) return;

@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class StructureLibrary : MonoBehaviour
 {
-    public enum Structures { EmptyLot, Crater, House_Basic, Farm_Basic, Mine_Basic, Lab_Basic, Turret_Basic};
+    public enum Structures { EmptyLot,
+        Crater, House_Basic, Farm_Basic, Mine_Basic, Lab_Basic, Turret_Basic,
+        House_Middle_A, House_Middle_B, House_Middle_C,
+        Farm_Middle_A, Farm_Middle_B, Farm_Middle_C,
+        Mine_Middle_A, Mine_Middle_B, Mine_Middle_C,
+        Lab_Middle_A, Lab_Middle_B, Lab_Middle_C,
+        Turret_Middle_A, Turret_Middle_B, Turret_Middle_C
+        };
 
     public static StructureLibrary Instance { get; private set; }
 

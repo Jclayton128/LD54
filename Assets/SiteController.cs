@@ -37,8 +37,6 @@ public class SiteController : MonoBehaviour
         else if (_currentSite >= _sites.Length) _currentSite = 0;
         _currentStructureType = _sites[_currentSite].CurrentStructure.StructureType;
         HighlightCurrentSite();
-        LoadUpgradePanelForCurrentSite();
-
     }
 
     private void LoadUpgradePanelForCurrentSite()
@@ -50,7 +48,7 @@ public class SiteController : MonoBehaviour
             brochures.Add(StructureLibrary.Instance.GetBrochureFromMenu(upgradeOptions[i]));
             //Debug.Log($"including upgrade to {StructureLibrary.Instance.GetBrochureFromMenu(upgradeOptions[i]).SName}");
         }
-        UpgradeController.Instance.LoadUpgradePanel(brochures, _currentStructureType);
+        UpgradeController.Instance.LoadUpgradePanel(upgradeOptions, brochures, _currentStructureType);
     }
 
     private void HighlightCurrentSite()
@@ -60,12 +58,7 @@ public class SiteController : MonoBehaviour
             site.Lowlight();
         }
         _sites[_currentSite].Highlight();
-    }
-
-    public bool CheckIfSameStructureType(StructureLibrary.Structures testType)
-    {
-        if (testType == _currentStructureType) return true;
-        else return false;
+        LoadUpgradePanelForCurrentSite();
     }
 
 }

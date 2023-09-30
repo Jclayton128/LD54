@@ -11,13 +11,16 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] UpgradeDescriptionDriver _upgradeDescriptionDriver = null;
 
     //state
-    List<StructureBrochure> _currentUpgradeOptions;
-    int _currentUpgrade = 0;
+    List<StructureBrochure> _currentOptionBrochures;
+    [SerializeField] int _currentUpgrade = 0;
     StructureLibrary.Structures _currentUpgradeStructureType;
     bool _isUpgrading = false;
     float _currentFactor;
     float _currentTime;
     bool _shouldBeMoving = false;
+    bool _canAffordMineral;
+    bool _canAffordScience;
+    List<StructureLibrary.Structures> _currentOptionTypes;
 
 
     private void Awake()
@@ -64,7 +67,8 @@ public class UpgradeController : MonoBehaviour
 
     public void RequestUpgradeInitiation()
     {
-        //check if can upgrade
+        if (!_canAffordMineral || !_canAffordScience) return;
+        //TODO play negative sound
         _isUpgrading = true;
         _currentFactor = 0;
         _currentTime = 0;
@@ -73,6 +77,7 @@ public class UpgradeController : MonoBehaviour
 
     public void RequestUpgradeCancellation()
     {
+        //TODO play cancel sound
         if (!_isUpgrading) return;
          _isUpgrading = false;
         _currentFactor = 0;
@@ -80,14 +85,15 @@ public class UpgradeController : MonoBehaviour
         _upgradePanelDriver.CancelUpgrade();
     }
 
-    public void LoadUpgradePanel(List<StructureBrochure> upgradeOptions, StructureLibrary.Structures currentType)
+    public void LoadUpgradePanel(List<StructureLibrary.Structures> optionTypes, List<StructureBrochure> upgradeBrochures, StructureLibrary.Structures currentType)
     {
         _currentUpgrade = 0;
         _currentUpgradeStructureType = currentType;
-        _currentUpgradeOptions = upgradeOptions;
+        _currentOptionTypes = optionTypes;
+        _currentOptionBrochures = upgradeBrochures;
         //Debug.Log($"{upgradeOptions.Count} upgrade options");
         List<Sprite> upgradeIcons = new List<Sprite>();
-        foreach (var brochure in upgradeOptions)
+        foreach (var brochure in upgradeBrochures)
         {
             upgradeIcons.Add(brochure.Icon);
         }
@@ -98,14 +104,14 @@ public class UpgradeController : MonoBehaviour
 
     private void LoadUpgradeDescriptionPanelWithCurrentUpgrade()
     {
-        bool isSame = SiteController.Instance.CheckIfSameStructureType(_currentUpgradeStructureType);
-        
-        
-        StructureBrochure brochure = _currentUpgradeOptions[_currentUpgrade];
+        bool isSame = false;
+        if (_currentOptionTypes[_currentUpgrade] == SiteController.Instance.CurrentStructureType) isSame = true;
 
-        bool canAffordMineral = ResourceController.Instance.CheckMineral(brochure.MineralCost);
-        bool canAffordScience = ResourceController.Instance.CheckScience(brochure.ScienceCost); ;
-        _upgradeDescriptionDriver.LoadDescription(brochure, isSame, canAffordMineral, canAffordScience);
+        StructureBrochure brochure = _currentOptionBrochures[_currentUpgrade];
+        _canAffordMineral = ResourceController.Instance.CheckMineral(brochure.MineralCost);
+        _canAffordScience = ResourceController.Instance.CheckScience(brochure.ScienceCost); ;
+        _upgradeDescriptionDriver.LoadDescription(brochure, isSame, _canAffordMineral, _canAffordScience);
+        _upgradePanelDriver.SetCheckmark(_canAffordMineral, _canAffordScience);
     }
 
     private void Update()

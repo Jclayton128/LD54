@@ -13,6 +13,9 @@ public class UpgradePanelDriver : MonoBehaviour
     [SerializeField] RotationHandler _upgradeRotationhandler = null;
     [SerializeField] Image _growthImage = null;
     [SerializeField] Image _checkImage = null;
+    [SerializeField] Sprite _checkSprite = null;
+    [SerializeField] Sprite _mineralSprite = null;
+    [SerializeField] Sprite _scienceSprite = null;
 
     //state
     Tween _upgradeBar;
@@ -36,9 +39,10 @@ public class UpgradePanelDriver : MonoBehaviour
 
     public void LoadUpgradeImages(List<Sprite> upgradeIcons)
     {
+        _upgradeRotationhandler.ResetRotation();
         if (upgradeIcons.Count > _upgradeOptionImages.Length)
         {
-            //Debug.LogWarning("more upgrade icons that can be displayed!");
+            Debug.LogWarning("more upgrade icons that can be displayed!");
         }
         foreach (var image in _upgradeOptionImages)
         {
@@ -87,6 +91,22 @@ public class UpgradePanelDriver : MonoBehaviour
         }
         _growthImage.transform.rotation = Quaternion.Euler(0, 0, 0);
         _checkImage.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    public void SetCheckmark(bool canAffordMineral, bool canAffordScience)
+    {
+        if (!canAffordMineral)
+        {
+            _checkImage.sprite = _mineralSprite;
+        }
+        else if (!canAffordScience)
+        {
+            _checkImage.sprite = _scienceSprite;
+        }
+        else
+        {
+            _checkImage.sprite = _checkSprite;
+        }
     }
 
 }
