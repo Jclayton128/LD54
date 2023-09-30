@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    enum Mode { Title, Rotate, Upgrade, Credits}
+    enum Mode { Title, Rotate, Upgrade, Credits, End}
 
     public Action<int> EarthRotationRequired;
     public Action<int> UpgradeRotationRequired;
@@ -30,7 +30,9 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         _currentMode = Mode.Title;
+        CameraController.Instance.SnapToTitle();
         SetCurrentMode();
+
         //_cursorIndex = 1;
         _cursorIndex = 0;
         ShowCurrentCursor();
@@ -66,27 +68,37 @@ public class UIController : MonoBehaviour
     {
         if (_currentMode == Mode.Title)
         {
-            //go to credits;
+            CameraController.Instance.FloatToCredits();
+            _currentMode = Mode.Credits;
+            SetCurrentMode();
         }
-        if (_currentMode == Mode.Upgrade)
+        else if(_currentMode == Mode.Upgrade)
         {
             _currentMode = Mode.Rotate;
             UpgradeController.Instance.RequestUpgradeCancellation();
             SetCurrentMode();
         }
-        if (_currentMode == Mode.Rotate)
+        else if(_currentMode == Mode.Rotate)
         {
-            //go to title?
+            //hold to quit?
+
         }
     }
 
     private void HandleDownDepressed()
     {
-        if (_currentMode == Mode.Title)
+        if (_currentMode == Mode.Credits)
+        {
+            _currentMode = Mode.Title;
+            SetCurrentMode();
+            CameraController.Instance.FloatToTitle();
+        }
+        else if (_currentMode == Mode.Title)
         {
             //begin game
             _currentMode = Mode.Rotate;
             SetCurrentMode();
+            CameraController.Instance.FloatToGame();
         }
         else if (_currentMode == Mode.Rotate)
         {

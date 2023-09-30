@@ -11,6 +11,8 @@ public class TimeLibrary : MonoBehaviour
     public float RotateTime { get; private set; } = 0.5f;
     public float ConfirmTime { get; private set; } = 1f;
 
+    public float CameraMoveTime { get; private set; } = 3f;
+
     private void Awake()
     {
         Instance = this;
