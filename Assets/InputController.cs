@@ -8,7 +8,10 @@ public class InputController : MonoBehaviour
     public static InputController Instance { get; private set; }
 
     public Action<int> RotationCommanded;
-    public Action RotationCeased;
+    public Action UpDepressed;
+    public Action UpReleased;
+    public Action DownDepressed;
+    public Action DownReleased;
 
     private void Awake()
     {
@@ -25,11 +28,29 @@ public class InputController : MonoBehaviour
         {
             RotationCommanded?.Invoke(1);
         }
-        
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            RotationCeased?.Invoke();
+            UpDepressed?.Invoke();
         }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            DownDepressed?.Invoke();
+        }
+
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            DownReleased?.Invoke();
+        }
+        else if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            UpReleased?.Invoke();
+        }
+
+        //if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        //{
+        //    RotationCeased?.Invoke();
+        //}
     }
 
 

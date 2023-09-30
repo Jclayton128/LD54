@@ -8,7 +8,8 @@ public class TimeLibrary : MonoBehaviour
 
 
     //state
-    public float EarthRotateTime { get; private set; } = 0.5f;
+    public float RotateTime { get; private set; } = 0.5f;
+    public float ConfirmTime { get; private set; } = 1f;
 
     private void Awake()
     {
@@ -17,6 +18,6 @@ public class TimeLibrary : MonoBehaviour
 
     public void SetEarthRotateTime(float newTime)
     {
-        EarthRotateTime = newTime;
+        RotateTime = newTime;
     }
 }

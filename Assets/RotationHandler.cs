@@ -7,8 +7,8 @@ using DG.Tweening;
 public class RotationHandler : MonoBehaviour
 {
     //settings
-    Vector3 _leftRotate = new Vector3(0, 0, -30);
-    Vector3 _rightRotate = new Vector3(0, 0, 30);
+    [SerializeField] Vector3 _leftRotate = new Vector3(0, 0, -30);
+    [SerializeField] Vector3 _rightRotate = new Vector3(0, 0, 30);
 
     //state
     bool _isMoving = false;
@@ -16,26 +16,27 @@ public class RotationHandler : MonoBehaviour
     Tween _rotateTween;
 
 
-    private void Start()
-    {
-        UIController.Instance.RotationRequired += HandleRotationCommanded;
-    }
+    //private void Start()
+    //{
+    //    if (_isEarth) UIController.Instance.EarthRotationRequired += HandleRotationCommanded;
+    //    else UIController.Instance.EarthRotationRequired -= HandleRotationCommanded;
+    //}
 
-    private void HandleRotationCommanded(int dir)
+    public void CommandRotation(int dir)
     {
         if (_isMoving) return;
         _isMoving = true;
         _rotateTween.Kill();
-        Invoke(nameof(EndMovement_Delay), TimeLibrary.Instance.EarthRotateTime);
+        Invoke(nameof(EndMovement_Delay), TimeLibrary.Instance.RotateTime);
         if (dir < 0)
         {
             _targetRotation = transform.rotation.eulerAngles + _leftRotate;
-            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.Instance.EarthRotateTime);
+            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.Instance.RotateTime);
         } 
         if (dir > 0)
         {
             _targetRotation = transform.rotation.eulerAngles + _rightRotate;
-            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.Instance.EarthRotateTime);
+            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.Instance.RotateTime);
         }
 
     }

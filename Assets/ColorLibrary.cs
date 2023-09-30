@@ -9,6 +9,9 @@ public class ColorLibrary : MonoBehaviour
     //settings
     public Color HighlightedStructure = Color.white;
     public Color LowlightedStructure = Color.grey;
+    
+    public Color HighlightedUpgrade = Color.white;
+    public Color LowlightedUpgrade = Color.grey;
 
     private void Awake()
     {
