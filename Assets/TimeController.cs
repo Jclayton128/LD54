@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static TimeController Instance { get; private set; }
+
+    //state
+    [SerializeField] float _productionTimescale = 1;
+    public float ProductionDeltaTime => _productionTimescale * Time.deltaTime;
+
+    public float WallDeltaTime => Time.deltaTime;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetProductionTimeRate(float factor)
     {
-        
+        _productionTimescale = factor;
     }
 }

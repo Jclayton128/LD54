@@ -27,18 +27,20 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-
+        TimeController.Instance.SetProductionTimeRate(0);
     }
 
     public void StartGameMode()
     {
         _isInGame = true;
+        TimeController.Instance.SetProductionTimeRate(1);
         EnterGameMode?.Invoke();
     }
 
     public void ExitGameMode()
     {
         _isInGame = false;
+        TimeController.Instance.SetProductionTimeRate(0);
     }
 
     private void Update()
@@ -68,6 +70,7 @@ public class GameController : MonoBehaviour
         _timeRemainingOnAttack = _attackDuration;
         _isAttackMode = true;
         UIController.Instance.EnterAttackMode();
+        TimeController.Instance.SetProductionTimeRate(0);
     }
 
     private void EndAttackMode()
@@ -75,6 +78,7 @@ public class GameController : MonoBehaviour
         _timeUntilNextAttack = _timeBetweenAttacks;
         _isAttackMode = false;
         UIController.Instance.ExitAttackMode();
+        TimeController.Instance.SetProductionTimeRate(1);
     }
 
     public void Debug_ForceImminentAttack()

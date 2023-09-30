@@ -147,6 +147,7 @@ public class UIController : MonoBehaviour
         else if(_currentMode == Mode.Rotate)
         {
             //Hold to activate!
+            SiteController.Instance.CurrentSite.BeginActivation();
         }
     }
 
@@ -179,9 +180,9 @@ public class UIController : MonoBehaviour
 
     private void HandleUpReleased()
     {
-        if (_currentMode == Mode.Upgrade)
+        if (_currentMode == Mode.Rotate)
         {
-            
+            SiteController.Instance.CurrentSite.StopActivation();
         }
     }
 

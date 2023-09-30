@@ -98,4 +98,14 @@ public class SiteHandler : MonoBehaviour
             ah.HandleStructureImpact();
         }
     }
+
+    public void BeginActivation()
+    {
+        BroadcastMessage("Activate", SendMessageOptions.DontRequireReceiver);
+    }
+
+    public void StopActivation()
+    {
+        BroadcastMessage("Deactivate", SendMessageOptions.DontRequireReceiver);
+    }
 }

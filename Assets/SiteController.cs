@@ -12,6 +12,7 @@ public class SiteController : MonoBehaviour
 
     //state
     [SerializeField] int _currentSite = 0;
+    public SiteHandler CurrentSite => _sites[_currentSite];
     StructureLibrary.Structures _currentStructureType;
     public StructureLibrary.Structures CurrentStructureType => _currentStructureType;
 

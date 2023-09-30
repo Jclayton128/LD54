@@ -17,6 +17,6 @@ public class StructureHandler : MonoBehaviour
     {
         _sr = GetComponent<SpriteRenderer>();
         _upgradeOptions[0] = _structureType;
-    }
- 
+    } 
+
 }
