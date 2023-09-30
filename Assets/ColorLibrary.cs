@@ -13,6 +13,9 @@ public class ColorLibrary : MonoBehaviour
     public Color HighlightedUpgrade = Color.white;
     public Color LowlightedUpgrade = Color.grey;
 
+    public Color AffordableUpgrade = Color.white;
+    public Color UnaffordableUpgrade = Color.red;
+
     private void Awake()
     {
         

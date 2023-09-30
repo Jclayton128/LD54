@@ -11,6 +11,7 @@ public class StructureHandler : MonoBehaviour
     [SerializeField] StructureLibrary.Structures _structureType = StructureLibrary.Structures.Crater;
     public StructureLibrary.Structures StructureType => _structureType;
     [SerializeField] List<StructureLibrary.Structures> _upgradeOptions = new List<StructureLibrary.Structures>(5);
+    public List<StructureLibrary.Structures> UpgradeOptions => _upgradeOptions;
 
     private void Awake()
     {

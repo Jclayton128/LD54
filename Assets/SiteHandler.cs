@@ -11,6 +11,7 @@ public class SiteHandler : MonoBehaviour
     [SerializeField] int _currentHealth = 1;
     public SiteController.GeneralSites GeneralSiteType = SiteController.GeneralSites.Empty;
     StructureHandler _currentStructure;
+    public StructureHandler CurrentStructure=> _currentStructure;
 
     private void Start()
     {
@@ -38,28 +39,28 @@ public class SiteHandler : MonoBehaviour
             case SiteController.GeneralSites.House:
                 _currentStructure =
                     Instantiate(StructureLibrary.Instance.
-                    GetPrefabFromMenu(StructureLibrary.Structures.House).GetComponent<StructureHandler>(),
+                    GetPrefabFromMenu(StructureLibrary.Structures.House_Basic).GetComponent<StructureHandler>(),
                     transform);
                 break;
 
             case SiteController.GeneralSites.Farm:
                 _currentStructure =
                     Instantiate(StructureLibrary.Instance.
-                    GetPrefabFromMenu(StructureLibrary.Structures.Farm).GetComponent<StructureHandler>(),
+                    GetPrefabFromMenu(StructureLibrary.Structures.Farm_Basic).GetComponent<StructureHandler>(),
                     transform);
                 break;
 
             case SiteController.GeneralSites.Mine:
                 _currentStructure =
                     Instantiate(StructureLibrary.Instance.
-                    GetPrefabFromMenu(StructureLibrary.Structures.Mine).GetComponent<StructureHandler>(),
+                    GetPrefabFromMenu(StructureLibrary.Structures.Mine_Basic).GetComponent<StructureHandler>(),
                     transform);
                 break;
 
             case SiteController.GeneralSites.Lab:
                 _currentStructure =
                     Instantiate(StructureLibrary.Instance.
-                    GetPrefabFromMenu(StructureLibrary.Structures.Lab).GetComponent<StructureHandler>(),
+                    GetPrefabFromMenu(StructureLibrary.Structures.Lab_Basic).GetComponent<StructureHandler>(),
                     transform);
                 break;
         }

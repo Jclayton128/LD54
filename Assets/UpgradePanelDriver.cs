@@ -34,7 +34,23 @@ public class UpgradePanelDriver : MonoBehaviour
         _upgradeBar = _growthImage.DOFillAmount(0, 0.3f);
     }
 
-
+    public void LoadUpgradeImages(List<Sprite> upgradeIcons)
+    {
+        if (upgradeIcons.Count > _upgradeOptionImages.Length)
+        {
+            //Debug.LogWarning("more upgrade icons that can be displayed!");
+        }
+        foreach (var image in _upgradeOptionImages)
+        {
+            image.sprite = null;
+            //Debug.Log("nullin image");
+        }
+        for (int i = 0; i < upgradeIcons.Count; i++)
+        {
+            _upgradeOptionImages[i].sprite = upgradeIcons[i];
+            //Debug.Log("adding valuable image");
+        }
+    }
 
     public void MoveUpgradeLeft()
     {

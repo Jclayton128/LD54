@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: _structureType
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1420587125376747544, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
+      propertyPath: _upgradeOptions.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4141770094989344836, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: m_Size.x
       value: 0.96
@@ -74,6 +78,16 @@ PrefabInstance:
     - target: {fileID: 8229481139645184267, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787016289614013146, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
+      propertyPath: _desc
+      value: 'Produces Science from adjacent Homes inefficiently.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787016289614013146, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
+      propertyPath: _name
+      value: Basic Lab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}

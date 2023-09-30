@@ -55,8 +55,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
+      propertyPath: _desc
+      value: A small, basic house. Won't hold many people.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
+      propertyPath: _name
+      value: Basic House
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
+      propertyPath: _mineralCost
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5067618148371530651, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _structureType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067618148371530651, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
+      propertyPath: _upgradeOptions.Array.data[0]
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7827183965088517063, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}

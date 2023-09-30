@@ -31,6 +31,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Structure_Crater
       objectReference: {fileID: 0}
+    - target: {fileID: 8573304605545238190, guid: 9b9873e94490a5e46a60b91661b8a2ca, type: 3}
+      propertyPath: _desc
+      value: Nothing can go here
+      objectReference: {fileID: 0}
+    - target: {fileID: 8573304605545238190, guid: 9b9873e94490a5e46a60b91661b8a2ca, type: 3}
+      propertyPath: _name
+      value: Crater
+      objectReference: {fileID: 0}
     - target: {fileID: 9025005440230937983, guid: 9b9873e94490a5e46a60b91661b8a2ca, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -51,6 +51,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _desc
+      value: A basic hole in the ground. Slowly produces minerals.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _name
+      value: Basic Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _mineralCost
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3144989033157866732, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: m_Name
       value: Structure_Mine_basic
@@ -73,6 +85,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7242020541309721624, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: _structureType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7242020541309721624, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _upgradeOptions.Array.data[0]
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []

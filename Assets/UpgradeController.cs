@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,13 +8,17 @@ public class UpgradeController : MonoBehaviour
     public static UpgradeController Instance { get; private set; }
 
     [SerializeField] UpgradePanelDriver _upgradePanelDriver = null;
+    [SerializeField] UpgradeDescriptionDriver _upgradeDescriptionDriver = null;
 
     //state
+    List<StructureBrochure> _currentUpgradeOptions;
     int _currentUpgrade = 0;
+    StructureLibrary.Structures _currentUpgradeStructureType;
     bool _isUpgrading = false;
     float _currentFactor;
     float _currentTime;
     bool _shouldBeMoving = false;
+
 
     private void Awake()
     {
@@ -33,6 +38,7 @@ public class UpgradeController : MonoBehaviour
 
         _upgradePanelDriver.MoveUpgradeLeft();
         _upgradePanelDriver.HighlightUpgrade(_currentUpgrade);
+        LoadUpgradeDescriptionPanelWithCurrentUpgrade();
     }
 
     public void MoveUpgradeRight()
@@ -48,6 +54,7 @@ public class UpgradeController : MonoBehaviour
 
         _upgradePanelDriver.MoveUpgradeRight();
         _upgradePanelDriver.HighlightUpgrade(_currentUpgrade);
+        LoadUpgradeDescriptionPanelWithCurrentUpgrade();
     }
 
     private void CancelShouldBeMoving_Delay()
@@ -71,6 +78,34 @@ public class UpgradeController : MonoBehaviour
         _currentFactor = 0;
         _currentTime = 0;
         _upgradePanelDriver.CancelUpgrade();
+    }
+
+    public void LoadUpgradePanel(List<StructureBrochure> upgradeOptions, StructureLibrary.Structures currentType)
+    {
+        _currentUpgrade = 0;
+        _currentUpgradeStructureType = currentType;
+        _currentUpgradeOptions = upgradeOptions;
+        //Debug.Log($"{upgradeOptions.Count} upgrade options");
+        List<Sprite> upgradeIcons = new List<Sprite>();
+        foreach (var brochure in upgradeOptions)
+        {
+            upgradeIcons.Add(brochure.Icon);
+        }
+        _upgradePanelDriver.LoadUpgradeImages(upgradeIcons);
+        _upgradePanelDriver.HighlightUpgrade(_currentUpgrade);
+        LoadUpgradeDescriptionPanelWithCurrentUpgrade();
+    }
+
+    private void LoadUpgradeDescriptionPanelWithCurrentUpgrade()
+    {
+        bool isSame = SiteController.Instance.CheckIfSameStructureType(_currentUpgradeStructureType);
+        
+        
+        StructureBrochure brochure = _currentUpgradeOptions[_currentUpgrade];
+
+        bool canAffordMineral = ResourceController.Instance.CheckMineral(brochure.MineralCost);
+        bool canAffordScience = ResourceController.Instance.CheckScience(brochure.ScienceCost); ;
+        _upgradeDescriptionDriver.LoadDescription(brochure, isSame, canAffordMineral, canAffordScience);
     }
 
     private void Update()

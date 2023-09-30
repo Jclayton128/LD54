@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StructureLibrary : MonoBehaviour
 {
-    public enum Structures { EmptyLot, Crater, House, Farm, Mine, Lab};
+    public enum Structures { EmptyLot, Crater, House_Basic, Farm_Basic, Mine_Basic, Lab_Basic, Turret_Basic};
 
     public static StructureLibrary Instance { get; private set; }
 
@@ -42,5 +42,14 @@ public class StructureLibrary : MonoBehaviour
             Debug.LogWarning($"menu doesn't contain a {structure}");
         }
         return _structureMenu[structure];
+    }
+
+    public StructureBrochure GetBrochureFromMenu(Structures structure)
+    {
+        if (!_structureMenu.ContainsKey(structure))
+        {
+            Debug.LogWarning($"menu doesn't contain a {structure}");
+        }
+        return _structureMenu[structure].GetComponent<StructureBrochure>();
     }
 }

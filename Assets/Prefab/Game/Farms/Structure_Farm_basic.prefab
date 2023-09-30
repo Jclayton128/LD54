@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: _structureType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3700383667429040947, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
+      propertyPath: _upgradeOptions.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5969638264062284320, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -70,6 +74,18 @@ PrefabInstance:
     - target: {fileID: 5969638264062284320, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
+      propertyPath: _desc
+      value: Slowly grows food.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
+      propertyPath: _name
+      value: Basic Farm
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
+      propertyPath: _mineralCost
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8971041557948222407, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_Name
