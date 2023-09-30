@@ -91,6 +91,7 @@ public class UIController : MonoBehaviour
                 break;
 
             case Mode.Rotate:
+                GameController.Instance.StartGameMode();
                 _canRotate = true;
                 break;
 
@@ -105,6 +106,7 @@ public class UIController : MonoBehaviour
 
             case Mode.End:
                 _canRotate = true;
+                GameController.Instance.ExitGameMode();
                 _endPanel.ShowHidePanel(true);
                 break;
 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public Action EnterGameMode;
     public static GameController Instance { get; private set; }
 
     //state
@@ -14,6 +15,8 @@ public class GameController : MonoBehaviour
     public float TimeUntilNextAttack => _timeUntilNextAttack;
     float _attackDuration = 15f;
     float _timeBetweenAttacks = 45f;
+    bool _isInGame = false;
+    public bool IsInGame => _isInGame;
     [SerializeField] bool _isAttackMode = false;
     public bool IsAttackMode => _isAttackMode;
 
@@ -27,8 +30,20 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void StartGameMode()
+    {
+        _isInGame = true;
+        EnterGameMode?.Invoke();
+    }
+
+    public void ExitGameMode()
+    {
+        _isInGame = false;
+    }
+
     private void Update()
     {
+        if (!_isInGame) return;
         if (!_isAttackMode)
         {
             _timeUntilNextAttack -= Time.deltaTime;

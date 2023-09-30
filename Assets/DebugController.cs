@@ -38,5 +38,12 @@ public class DebugController : MonoBehaviour
         {
             GameController.Instance.Debug_ForceEndAttack();
         }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (GameController.Instance.IsAttackMode)
+            {
+                AsteroidController.Instance.SpawnNewAsteroid();
+            }
+        }
     }
 }

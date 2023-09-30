@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class SiteController : MonoBehaviour
 {
-
+    public enum GeneralSites { Empty, Cratered, House, Farm, Mine, Lab}
     public static SiteController Instance { get; private set; }
 
     [SerializeField] SiteHandler[] _sites = null;
 
     //state
     int _currentSite = 0;
+
     
 
     private void Awake()
@@ -21,9 +22,11 @@ public class SiteController : MonoBehaviour
 
     private void Start()
     {
-        HighlightCurrentSite();
+        GameController.Instance.EnterGameMode += HighlightCurrentSite;
         UIController.Instance.SiteSelectionChanged += HandleSiteSelectionChanged;
     }
+
+
 
     private void HandleSiteSelectionChanged(int dir)
     {

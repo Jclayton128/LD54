@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Structure
+  - Asteroid
+  - Bullet
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Structures
     uniqueID: 4155584033
+    locked: 0
+  - name: Asteroids
+    uniqueID: 4195141341
     locked: 0
   - name: UI
     uniqueID: 3219045745
