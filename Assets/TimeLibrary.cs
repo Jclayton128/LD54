@@ -12,6 +12,7 @@ public class TimeLibrary : MonoBehaviour
     public float ConfirmTime { get; private set; } = 1f;
 
     public float CameraMoveTime { get; private set; } = 3f;
+    public float CameraZoomTime { get; private set; } = 1.5f;
 
     private void Awake()
     {

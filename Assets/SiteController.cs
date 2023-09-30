@@ -22,7 +22,7 @@ public class SiteController : MonoBehaviour
     private void Start()
     {
         HighlightCurrentSite();
-        UIController.Instance.EarthRotationRequired += HandleSiteSelectionChanged;
+        UIController.Instance.SiteSelectionChanged += HandleSiteSelectionChanged;
     }
 
     private void HandleSiteSelectionChanged(int dir)

@@ -5,20 +5,25 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    enum Mode { Title, Rotate, Upgrade, Credits, End}
+    enum Mode { Title, Rotate, Upgrade, Credits, End, Attack}
 
-    public Action<int> EarthRotationRequired;
+    public Action<int> SiteSelectionChanged;
     public Action<int> UpgradeRotationRequired;
     public static UIController Instance { get; private set; }
 
     //scene references
     [SerializeField] CursorDriver[] _cursors = null;
     [SerializeField] PanelDriver[] _panels = null;
+    [SerializeField] PanelDriver _creditsPanel = null;
+    [SerializeField] PanelDriver _titlePanel = null;
     [SerializeField] PanelDriver _upgradePanel = null;
+    [SerializeField] PanelDriver _endPanel = null;
     [SerializeField] RotationHandler _earthRotationHandler = null;
 
     //state
     bool _shouldEarthBeRotating = false;
+    [SerializeField] bool _canRotate = false;
+
     int _cursorIndex;
     [SerializeField] Mode _currentMode;
 
@@ -31,7 +36,7 @@ public class UIController : MonoBehaviour
     {
         _currentMode = Mode.Title;
         CameraController.Instance.SnapToTitle();
-        SetCurrentMode();
+        SetPanelsForCurrentMode();
 
         //_cursorIndex = 1;
         _cursorIndex = 0;
@@ -44,20 +49,63 @@ public class UIController : MonoBehaviour
         
     }
 
-    private void SetCurrentMode()
+    public void EnterAttackMode()
     {
+        _currentMode = Mode.Attack;
+        SetPanelsForCurrentMode();
+        CameraController.Instance.SetAttackZoom();
+        _canRotate = false;
+    }
+
+    public void ExitAttackMode()
+    {
+        _currentMode = Mode.Rotate;
+        SetPanelsForCurrentMode();
+        CameraController.Instance.SetNormalZoom();
+        _canRotate = true;
+    }
+
+    public void EnterEndGame()
+    {
+        _currentMode = Mode.End;
+        SetPanelsForCurrentMode();
+        CameraController.Instance.SetNormalZoom();
+    }
+
+    private void SetPanelsForCurrentMode()
+    {
+        foreach (var panel in _panels)
+        {
+            panel.ShowHidePanel(false);
+        }
         switch (_currentMode)
         {
+            case Mode.Credits:
+                _canRotate = false;
+                _creditsPanel.ShowHidePanel(true);
+                break;
+
             case Mode.Title:
-                _upgradePanel.ShowHidePanel(false);
+                _canRotate = false;
+                _titlePanel.ShowHidePanel(true);
                 break;
 
             case Mode.Rotate:
-                _upgradePanel.ShowHidePanel(false);
+                _canRotate = true;
                 break;
 
             case Mode.Upgrade:
+                _canRotate = true;
                 _upgradePanel.ShowHidePanel(true);
+                break;
+
+            case Mode.Attack:
+                _canRotate = false;
+                break;
+
+            case Mode.End:
+                _canRotate = true;
+                _endPanel.ShowHidePanel(true);
                 break;
 
             default: break;
@@ -70,18 +118,17 @@ public class UIController : MonoBehaviour
         {
             CameraController.Instance.FloatToCredits();
             _currentMode = Mode.Credits;
-            SetCurrentMode();
+            SetPanelsForCurrentMode();
         }
         else if(_currentMode == Mode.Upgrade)
         {
             _currentMode = Mode.Rotate;
             UpgradeController.Instance.RequestUpgradeCancellation();
-            SetCurrentMode();
+            SetPanelsForCurrentMode();
         }
         else if(_currentMode == Mode.Rotate)
         {
-            //hold to quit?
-
+            //Hold to activate!
         }
     }
 
@@ -90,20 +137,20 @@ public class UIController : MonoBehaviour
         if (_currentMode == Mode.Credits)
         {
             _currentMode = Mode.Title;
-            SetCurrentMode();
+            SetPanelsForCurrentMode();
             CameraController.Instance.FloatToTitle();
         }
         else if (_currentMode == Mode.Title)
         {
             //begin game
             _currentMode = Mode.Rotate;
-            SetCurrentMode();
+            SetPanelsForCurrentMode();
             CameraController.Instance.FloatToGame();
         }
         else if (_currentMode == Mode.Rotate)
         {
             _currentMode = Mode.Upgrade;
-            SetCurrentMode();
+            SetPanelsForCurrentMode();
         }
         else if(_currentMode == Mode.Upgrade)
         {
@@ -130,6 +177,7 @@ public class UIController : MonoBehaviour
 
     private void HandleRotationCommanded(int dir)
     {
+        if (!_canRotate) return;
         switch (_currentMode)
         {
             case Mode.Rotate:
@@ -176,7 +224,7 @@ public class UIController : MonoBehaviour
         {
             _cursorIndex = _cursors.Length-1;
             _earthRotationHandler.CommandRotation(-1);
-            //EarthRotationRequired?.Invoke(-1);
+            SiteSelectionChanged?.Invoke(-1);
             _shouldEarthBeRotating = true;
             Invoke(nameof(CancelEarthRotation_Delay), TimeLibrary.Instance.RotateTime);
         }
@@ -191,7 +239,7 @@ public class UIController : MonoBehaviour
         {
             _cursorIndex = 0;
             _earthRotationHandler.CommandRotation(1);
-            //EarthRotationRequired?.Invoke(1);
+            SiteSelectionChanged?.Invoke(1);
             _shouldEarthBeRotating = true;
             Invoke(nameof(CancelEarthRotation_Delay), TimeLibrary.Instance.RotateTime);
         }
