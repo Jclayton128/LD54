@@ -7,8 +7,8 @@ using DG.Tweening;
 public class RotationHandler : MonoBehaviour
 {
     //settings
-    Vector3 _leftRotate = new Vector3(0, 0, -90);
-    Vector3 _rightRotate = new Vector3(0, 0, 90);
+    Vector3 _leftRotate = new Vector3(0, 0, -30);
+    Vector3 _rightRotate = new Vector3(0, 0, 30);
 
     //state
     bool _isMoving = false;
@@ -26,16 +26,16 @@ public class RotationHandler : MonoBehaviour
         if (_isMoving) return;
         _isMoving = true;
         _rotateTween.Kill();
-        Invoke(nameof(EndMovement_Delay), TimeLibrary.EarthRotateTime);
+        Invoke(nameof(EndMovement_Delay), TimeLibrary.Instance.EarthRotateTime);
         if (dir < 0)
         {
             _targetRotation = transform.rotation.eulerAngles + _leftRotate;
-            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.EarthRotateTime);
+            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.Instance.EarthRotateTime);
         } 
         if (dir > 0)
         {
             _targetRotation = transform.rotation.eulerAngles + _rightRotate;
-            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.EarthRotateTime);
+            _rotateTween = transform.DORotate(_targetRotation, TimeLibrary.Instance.EarthRotateTime);
         }
 
     }

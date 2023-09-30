@@ -22,7 +22,8 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        _cursorIndex = 1;
+        //_cursorIndex = 1;
+        _cursorIndex = 0;
         ShowCurrentCursor();
         InputController.Instance.RotationCommanded += HandleRotationCommanded;
     }
@@ -51,7 +52,7 @@ public class UIController : MonoBehaviour
             _cursorIndex = _cursors.Length-1;
             RotationRequired?.Invoke(-1);
             _shouldEarthBeRotating = true;
-            Invoke(nameof(CancelEarthRotation_Delay), TimeLibrary.EarthRotateTime);
+            Invoke(nameof(CancelEarthRotation_Delay), TimeLibrary.Instance.EarthRotateTime);
         }
         ShowCurrentCursor();
     }
@@ -65,7 +66,7 @@ public class UIController : MonoBehaviour
             _cursorIndex = 0;
             RotationRequired?.Invoke(1);
             _shouldEarthBeRotating = true;
-            Invoke(nameof(CancelEarthRotation_Delay), TimeLibrary.EarthRotateTime);
+            Invoke(nameof(CancelEarthRotation_Delay), TimeLibrary.Instance.EarthRotateTime);
         }
         ShowCurrentCursor();
     }
