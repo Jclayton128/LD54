@@ -11,7 +11,7 @@ public class SiteController : MonoBehaviour
     [SerializeField] SiteHandler[] _sites = null;
 
     //state
-    int _currentSite = 0;
+    [SerializeField] int _currentSite = 0;
     StructureLibrary.Structures _currentStructureType;
     public StructureLibrary.Structures CurrentStructureType => _currentStructureType;
 
@@ -61,4 +61,8 @@ public class SiteController : MonoBehaviour
         LoadUpgradePanelForCurrentSite();
     }
 
+    public void PushNewStructureToSelectedSite(StructureLibrary.Structures newStructure)
+    {
+        _sites[_currentSite].ReceiveNewStructure(newStructure);
+    }
 }

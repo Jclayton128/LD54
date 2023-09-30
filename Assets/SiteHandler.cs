@@ -10,7 +10,7 @@ public class SiteHandler : MonoBehaviour
     //state
     [SerializeField] int _currentHealth = 1;
     public SiteController.GeneralSites GeneralSiteType = SiteController.GeneralSites.Empty;
-    StructureHandler _currentStructure;
+    [SerializeField] StructureHandler _currentStructure;
     public StructureHandler CurrentStructure=> _currentStructure;
 
     private void Start()
@@ -66,7 +66,19 @@ public class SiteHandler : MonoBehaviour
         }
     }
 
+    public void ReceiveNewStructure(StructureLibrary.Structures newStructure)
+    {
+        if (_currentStructure)
+        {
 
+            Destroy(_currentStructure.gameObject);
+        }
+
+        _currentStructure =
+            Instantiate(StructureLibrary.Instance.
+            GetPrefabFromMenu(newStructure).GetComponent<StructureHandler>(),
+            transform);
+    }
     public void Highlight()
     {
         _currentStructure.SpriteRenderer.color = ColorLibrary.Instance.HighlightedStructure;

@@ -85,6 +85,20 @@ public class UpgradeController : MonoBehaviour
         _upgradePanelDriver.CancelUpgrade();
     }
 
+    private void CompleteUpgrade()
+    {
+        StructureBrochure brochure = _currentOptionBrochures[_currentUpgrade];
+        ResourceController.Instance.SpendMinerals(brochure.MineralCost);
+        ResourceController.Instance.SpendScience(brochure.ScienceCost);
+
+        //TODO play ding/construction sound
+        SiteController.Instance.PushNewStructureToSelectedSite(_currentOptionTypes[_currentUpgrade]);
+        _isUpgrading = false;
+        _currentFactor = 0;
+        _currentTime = 0;
+        _upgradePanelDriver.CancelUpgrade();
+    }
+
     public void LoadUpgradePanel(List<StructureLibrary.Structures> optionTypes, List<StructureBrochure> upgradeBrochures, StructureLibrary.Structures currentType)
     {
         _currentUpgrade = 0;
@@ -121,6 +135,10 @@ public class UpgradeController : MonoBehaviour
             _currentTime += Time.deltaTime;
             _currentFactor = _currentTime / TimeLibrary.Instance.ConfirmTime;
             _upgradePanelDriver.SetUpgradeFactor(_currentFactor);
+            if (_currentFactor >= 1)
+            {
+                CompleteUpgrade();
+            }
         }
     }
 }

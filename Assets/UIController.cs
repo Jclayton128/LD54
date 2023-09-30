@@ -93,7 +93,6 @@ public class UIController : MonoBehaviour
                 break;
 
             case Mode.Rotate:
-                GameController.Instance.StartGameMode();
                 foreach (var panel in _rotatePanels)
                 {
                     panel.ShowHidePanel(true);
@@ -164,6 +163,7 @@ public class UIController : MonoBehaviour
             //begin game
             _currentMode = Mode.Rotate;
             SetPanelsForCurrentMode();
+            GameController.Instance.StartGameMode();
             CameraController.Instance.FloatToGame();
         }
         else if (_currentMode == Mode.Rotate)
