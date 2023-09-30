@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Earth
+    uniqueID: 252247109
+    locked: 0
+  - name: Structures
+    uniqueID: 4155584033
+    locked: 0
