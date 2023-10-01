@@ -331,7 +331,7 @@ MonoBehaviour:
   - {fileID: 1037119729192626454}
   - {fileID: 771277072243142978}
   _maxPopulation: 100
-  _initialGrowthRate: 0.15
+  _initialGrowthRate: 0.1
   _currentPopulation: 2
   _popToAdd: 0
 --- !u!4 &2869293047919866504 stripped

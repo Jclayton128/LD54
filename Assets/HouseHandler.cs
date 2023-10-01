@@ -17,12 +17,22 @@ public class HouseHandler : MonoBehaviour
 
     private void Start()
     {
-        GameController.Instance.EnterGameMode += HandleNewGame;
+        //GameController.Instance.EnterGameMode += HandleNewGame;
+        HandleNewGame();
     }
 
     private void HandleNewGame()
     {
+        Invoke(nameof(Delay_HandleNewGame), 0.01f);
+        //_currentPopulation = 2;
+        //ResourceController.Instance.AddToPopulation(_currentPopulation);
+    }
+
+    private void Delay_HandleNewGame()
+    {
         _currentPopulation = 2;
+        ResourceController.Instance.AddToPopulation(_currentPopulation);
+        Debug.Log($"adding {_currentPopulation} pop. now at {ResourceController.Instance.CurrentPopulation}");
     }
 
     void Update()
@@ -37,7 +47,7 @@ public class HouseHandler : MonoBehaviour
     private void OnDestroy()
     {
         ResourceController.Instance.AddToPopulation(-1*_currentPopulation);
-        GameController.Instance.EnterGameMode -= HandleNewGame;
+        //GameController.Instance.EnterGameMode -= HandleNewGame;
     }
 
     private void ConvertStockToBlips()

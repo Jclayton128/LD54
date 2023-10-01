@@ -13,16 +13,17 @@ public class GameController : MonoBehaviour
     //state
     int _attackWavesEndured;
     public int Difficulty => 1 + _attackWavesEndured;
-    float _timeUntilNextAttack = 30f;
+    float _timeUntilNextAttack;
     //float _timeRemainingOnAttack;
     //public float TimeRemainingOnAttack => _timeRemainingOnAttack;
     public float TimeUntilNextAttack => _timeUntilNextAttack;
     //float _attackDuration = 15f;
-    float _timeBetweenAttacks = 45f;
+    float _timeBetweenAttacks_starting = 40f;
     bool _isInGame = false;
     public bool IsInGame => _isInGame;
     [SerializeField] bool _isAttackMode = false;
     public bool IsAttackMode => _isAttackMode;
+    float _currentTimeBetweenAttacks;
 
     private void Awake()
     {
@@ -39,6 +40,8 @@ public class GameController : MonoBehaviour
     {
         _attackWavesEndured = 0;
            _isInGame = true;
+        _currentTimeBetweenAttacks = _timeBetweenAttacks_starting;
+        _timeUntilNextAttack = _currentTimeBetweenAttacks;
         TimeController.Instance.SetProductionTimeRate(1);
         EnterGameMode?.Invoke();
     }
@@ -93,6 +96,10 @@ public class GameController : MonoBehaviour
     private void EndAttackMode()
     {
         _attackWavesEndured++;
+        _isAttackMode = false;
+        _currentTimeBetweenAttacks -= 1;
+        _currentTimeBetweenAttacks = Mathf.Clamp(_currentTimeBetweenAttacks, 10, 99);
+        _timeUntilNextAttack = _currentTimeBetweenAttacks;
         UIController.Instance.ExitAttackMode();
         TimeController.Instance.SetProductionTimeRate(1);
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6970388706773805568
+--- !u!1001 &8340196033418532043
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 681774485950737263, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: m_Name
-      value: Structure_House_Basic
+      value: Structure_House_Mid_Cap
       objectReference: {fileID: 0}
     - target: {fileID: 2869293047919866504, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: m_RootOrder
@@ -57,47 +57,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _desc
-      value: Can hold up to 100 citizens, and very fragile.
+      value: Can hold up to 500 citizens, and very fragile.
       objectReference: {fileID: 0}
     - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _name
-      value: Basic Housing
+      value: Large Housing
       objectReference: {fileID: 0}
     - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _mineralCost
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5067618148371530651, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _structureType
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5067618148371530651, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _upgradeOptions.Array.data[0]
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5067618148371530651, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _upgradeOptions.Array.data[1]
-      value: 7
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5256978284321519343, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
-      propertyPath: _initialGrowthRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7827183965088517063, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
-      propertyPath: m_Size.x
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 7827183965088517063, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
-      propertyPath: m_Size.y
-      value: 0.96
+      propertyPath: _maxPopulation
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7827183965088517063, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 225f24c2c8f12d045a62893c4b9fed31, type: 3}
-    - target: {fileID: 7827183965088517063, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 8650c69bc52f1ba49bd007bda5b15003, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}

@@ -128,8 +128,9 @@ public class ResourceController : MonoBehaviour
     }
 
     public void AddToPopulation(float amountToAdd)
-    {
+    {        
         _currentPop += amountToAdd;
+        //Debug.Log($"adding {amountToAdd} pop. now at {_currentPop}");
         _rsc.SetPopulation(Mathf.RoundToInt(_currentPop));
         _currentPop = Mathf.Clamp(_currentPop, 0, 9999999);
         if (YearsSurvived > 1 &&  _currentPop < 1)

@@ -7,26 +7,10 @@ using TMPro;
 
 public class DebugController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _ttaTMP = null;
-
     private void Update()
     {
         ListenForQuickAttack();
-        UpdateAttackTimer();
-    }
-
-    private void UpdateAttackTimer()
-    {
-        if (GameController.Instance.IsAttackMode)
-        {
-            _ttaTMP.text = $"Attack in Progress";
-        }
-        else
-        {
-            _ttaTMP.text = $"Attack in: {GameController.Instance.TimeUntilNextAttack}";
-        }
-
-    }
+    }   
 
     private void ListenForQuickAttack()
     {
