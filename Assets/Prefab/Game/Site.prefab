@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3785015969557978038}
   - component: {fileID: 7546367121723825059}
   - component: {fileID: -3157207076861870837}
+  - component: {fileID: 4650821930001067160}
   m_Layer: 6
   m_Name: Site
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   _sr: {fileID: 0}
   _currentHealth: 1
   GeneralSiteType: 0
+  _currentStructure: {fileID: 0}
 --- !u!60 &7546367121723825059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -67,7 +69,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.64, y: 1.28}
-    newSize: {x: 0.64, y: 1.28}
+    newSize: {x: 0.15, y: 0.15033333}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -101,3 +103,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4650821930001067160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643732384047488402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d5810d31826d64dbf26c015382c9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

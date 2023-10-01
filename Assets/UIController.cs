@@ -79,6 +79,11 @@ public class UIController : MonoBehaviour
         CameraController.Instance.SetNormalZoom();
     }
 
+    public void ReturnToRotateUponUpgradeCompletion()
+    {
+        _currentMode = Mode.Rotate;
+        SetPanelsForCurrentMode();
+    }
 
     private void SetPanelsForCurrentMode()
     {

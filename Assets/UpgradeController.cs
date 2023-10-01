@@ -20,6 +20,7 @@ public class UpgradeController : MonoBehaviour
     bool _shouldBeMoving = false;
     bool _canAffordMineral;
     bool _canAffordScience;
+    bool _isTechKnown;
     [SerializeField] bool _canBuildHere;
     List<StructureLibrary.Structures> _currentOptionTypes;
 
@@ -90,14 +91,19 @@ public class UpgradeController : MonoBehaviour
     {
         StructureBrochure brochure = _currentOptionBrochures[_currentUpgrade];
         ResourceController.Instance.SpendMinerals(brochure.MineralCost);
-        ResourceController.Instance.SpendScience(brochure.ScienceCost);
-
+        if (!_isTechKnown)
+        {
+            ResourceController.Instance.SpendScience(brochure.ScienceCost);
+        }
         //TODO play ding/construction sound
         SiteController.Instance.PushNewStructureToSelectedSite(_currentOptionTypes[_currentUpgrade]);
+        TechController.Instance.ResearchNewStructure(_currentOptionTypes[_currentUpgrade]);
         _isUpgrading = false;
         _currentFactor = 0;
         _currentTime = 0;
         _upgradePanelDriver.CancelUpgrade();
+        SiteController.Instance.HighlightCurrentSite();
+        UIController.Instance.ReturnToRotateUponUpgradeCompletion();
     }
 
     public void LoadUpgradePanel(List<StructureLibrary.Structures> optionTypes, List<StructureBrochure> upgradeBrochures, StructureLibrary.Structures currentType)
@@ -123,6 +129,7 @@ public class UpgradeController : MonoBehaviour
         if (_currentOptionTypes[_currentUpgrade] == SiteController.Instance.CurrentStructureType) isSame = true;
 
         StructureBrochure brochure = _currentOptionBrochures[_currentUpgrade];
+        _isTechKnown = TechController.Instance.CheckIfStructureIsAlreadyKnown(_currentOptionTypes[_currentUpgrade]);
         _canAffordMineral = ResourceController.Instance.CheckMineral(brochure.MineralCost);
         _canAffordScience = ResourceController.Instance.CheckScience(brochure.ScienceCost); ;
         _canBuildHere = true;
@@ -134,7 +141,7 @@ public class UpgradeController : MonoBehaviour
         {
             _canBuildHere = false;
         }
-        _upgradeDescriptionDriver.LoadDescription(brochure, isSame, _canAffordMineral, _canAffordScience);
+        _upgradeDescriptionDriver.LoadDescription(brochure, isSame, _canAffordMineral, _canAffordScience, _isTechKnown);
         _upgradePanelDriver.SetCheckmark(_canAffordMineral, _canAffordScience, _canBuildHere);
     }
 

@@ -13,7 +13,7 @@ public class UpgradeDescriptionDriver : MonoBehaviour
     [SerializeField] TextMeshProUGUI _mineralCost = null;
     [SerializeField] TextMeshProUGUI _scienceCost = null;
 
-    public void LoadDescription(StructureBrochure brochure, bool isSameThing, bool canAffordMineral, bool canAffordScience)
+    public void LoadDescription(StructureBrochure brochure, bool isSameThing, bool canAffordMineral, bool canAffordScience, bool isTechKnown)
     {
         _name.text = brochure.SName;
         _description.text = brochure.Description;
@@ -39,7 +39,12 @@ public class UpgradeDescriptionDriver : MonoBehaviour
                 _mineralCost.color = ColorLibrary.Instance.UnaffordableUpgrade;
             }
             _scienceCost.text = brochure.ScienceCost.ToString();
-            if (canAffordScience)
+            if (isTechKnown)
+            {
+                _scienceCost.text = "-";
+                _scienceCost.color = ColorLibrary.Instance.AffordableUpgrade;
+            }
+            else if (canAffordScience)
             {
                 _scienceCost.color = ColorLibrary.Instance.AffordableUpgrade;
             }

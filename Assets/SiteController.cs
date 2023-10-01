@@ -55,7 +55,7 @@ public class SiteController : MonoBehaviour
         UpgradeController.Instance.LoadUpgradePanel(upgradeOptions, brochures, _currentStructureType);
     }
 
-    private void HighlightCurrentSite()
+    public void HighlightCurrentSite()
     {
         foreach (var site in _sites)
         {

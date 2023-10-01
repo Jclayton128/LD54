@@ -7,14 +7,20 @@ public class HouseHandler : MonoBehaviour
     [SerializeField] SpriteRenderer[] _stageBlips = null;
 
     [SerializeField] float _maxPopulation = 100;
-    [SerializeField] float _initialGrowthRate = 1.1f;
+    [SerializeField] float _initialGrowthRate = 0.001f;
 
     //state
     float _factor;
     [SerializeField] float _currentPopulation;
+    public float Population => _currentPopulation;
     [SerializeField] float _popToAdd;
 
     private void Start()
+    {
+        GameController.Instance.EnterGameMode += HandleNewGame;
+    }
+
+    private void HandleNewGame()
     {
         _currentPopulation = 2;
     }
@@ -31,6 +37,7 @@ public class HouseHandler : MonoBehaviour
     private void OnDestroy()
     {
         ResourceController.Instance.AddToPopulation(-1*_currentPopulation);
+        GameController.Instance.EnterGameMode -= HandleNewGame;
     }
 
     private void ConvertStockToBlips()
