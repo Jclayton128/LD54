@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9078735242807970145
+--- !u!1001 &4099363348818365545
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,52 +8,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 931307143401651147, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _upgradeOptions.Array.data[1]
+      propertyPath: _structureType
       value: 19
       objectReference: {fileID: 0}
-    - target: {fileID: 931307143401651147, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _upgradeOptions.Array.data[2]
-      value: 20
+    - target: {fileID: 2530806907681157177, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
+      propertyPath: _scanRange
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 931307143401651147, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _upgradeOptions.Array.data[3]
-      value: 21
+    - target: {fileID: 2530806907681157177, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
+      propertyPath: _rotateRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2530806907681157177, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
+      propertyPath: _scanMidpoint
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2747441420976731031, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a074cc22969cd294bb4e3c105ee02b60, type: 3}
+      objectReference: {fileID: 21300000, guid: dd839329964812747bd266081913d1b0, type: 3}
     - target: {fileID: 4884513862322983743, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: m_Name
-      value: Structure_Turret_Basic
+      value: Structure_Turret_Quick
       objectReference: {fileID: 0}
     - target: {fileID: 5459514642375220821, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _timeBetweenShots
-      value: 1
+      propertyPath: _shotSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7398176540962165001, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: _desc
-      value: Automatically fires at incoming rocks. Rather weak.
+      value: Short-ranged, and very quick to fire.
       objectReference: {fileID: 0}
     - target: {fileID: 7398176540962165001, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: _name
-      value: Standard Turret
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398176540962165001, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _mineralCost
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7502748099243388174, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _scanRange
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7502748099243388174, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _rotateRate
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7502748099243388174, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
-      propertyPath: _scanMidpoint
-      value: 6
+      value: Quick Turret
       objectReference: {fileID: 0}
     - target: {fileID: 7885424585770650328, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: m_RootOrder
@@ -99,6 +87,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7502748099243388174, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}

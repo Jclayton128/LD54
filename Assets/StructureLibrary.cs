@@ -9,10 +9,12 @@ public class StructureLibrary : MonoBehaviour
         Crater, House_Basic, Farm_Basic, Mine_Basic, Lab_Basic, Turret_Basic,
         House_Middle_Cap, House_Middle_B, House_Middle_C,
         Farm_Mid_Growth, Farm_Mid_Yield, Farm_High_Growth,
-        Mine_Middle_A, Mine_Middle_B, Mine_Middle_C,
-        Lab_Middle_A, Lab_Middle_B, Lab_Middle_C,
-        Turret_Middle_A, Turret_Middle_B, Turret_Middle_C,
-        House_High_Cap, House_Super_Cap, Farm_High_Yield
+        Mine_Mid_Auto, Mine_Mid_Storage, Mine_Mid_Rate,
+        Lab_Mid, Lab_Mid_Damage, Lab_Mid_Growth,
+        Turret_Quick, Turret_LongRange, Turret_Heavy,
+        House_High_Cap, House_Super_Cap, Farm_High_Yield,
+        Lab_High, Mine_High_Storage, Mine_High_Rate,
+        Turret_MegaHeavy
 
         };
 

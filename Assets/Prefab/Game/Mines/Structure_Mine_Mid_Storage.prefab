@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5960151144017014662
+--- !u!1001 &6135174023107747002
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -711347635809585037, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: _storageMax
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -711347635809585037, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: _timeToMine
@@ -65,55 +65,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: _desc
-      value: Slowly extracts and stores a small amount of Minerals
+      value: Increased storage means more Minerals can be held between harvests.
       objectReference: {fileID: 0}
     - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: _name
-      value: Basic Mine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: _mineralCost
-      value: 5
+      value: Large Mine
       objectReference: {fileID: 0}
     - target: {fileID: 3144989033157866732, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: m_Name
-      value: Structure_Mine_basic
-      objectReference: {fileID: 0}
-    - target: {fileID: 5642067829053658180, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: m_Size.x
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 5642067829053658180, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: m_Size.y
-      value: 0.96
+      value: Structure_Mine_Mid_Storage
       objectReference: {fileID: 0}
     - target: {fileID: 5642067829053658180, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a88ced143f6f73a448d009a421ccc9ba, type: 3}
-    - target: {fileID: 5642067829053658180, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 0dd32db00c3e4644b90c41c1885a2e99, type: 3}
     - target: {fileID: 7242020541309721624, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: _structureType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242020541309721624, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: _upgradeOptions.Array.data[0]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242020541309721624, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: _upgradeOptions.Array.data[1]
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242020541309721624, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: _upgradeOptions.Array.data[2]
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7242020541309721624, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
-      propertyPath: _upgradeOptions.Array.data[3]
-      value: 15
+      propertyPath: _upgradeOptions.Array.data[1]
+      value: 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}

@@ -9,6 +9,8 @@ public class TechController : MonoBehaviour
 
     //state
     List<StructureLibrary.Structures> _researchedStructures = new List<StructureLibrary.Structures>();
+    public int BonusDamage;
+    public float BonusGrowthRate;
 
     private void Awake()
     {
@@ -23,6 +25,18 @@ public class TechController : MonoBehaviour
     private void HandleNewGame()
     {
         _researchedStructures.Clear();
+        BonusDamage = 0;
+        BonusGrowthRate = 0;
+    }
+
+    public void ModifyBonusDamage(int amount)
+    {
+        BonusDamage += amount;
+    }
+
+    public void ModifyGrowthRate(float amount)
+    {
+        BonusGrowthRate += amount;
     }
 
     public void ResearchNewStructure(StructureLibrary.Structures newStructure)

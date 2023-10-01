@@ -9,6 +9,8 @@ public class LabHandler : MonoBehaviour
 
     //setting
     [SerializeField] float _scienceRate = 0.01f; // points per second per adj pop
+    [SerializeField] bool _addsBonusDamage;
+    [SerializeField] bool _addsBonusGrowth;
 
     //state
     [SerializeField] float _scienceStep;
@@ -22,11 +24,16 @@ public class LabHandler : MonoBehaviour
     private void Start()
     {
         GameController.Instance.EnterGameMode += HandleNewGame;
+        if (_addsBonusDamage) TechController.Instance.ModifyBonusDamage(1);
+        if (_addsBonusGrowth) TechController.Instance.ModifyGrowthRate(0.005f);
     }
 
     private void OnDestroy()
     {
         GameController.Instance.EnterGameMode -= HandleNewGame;
+
+        if (_addsBonusDamage) TechController.Instance.ModifyBonusDamage(-1);
+        if (_addsBonusGrowth) TechController.Instance.ModifyGrowthRate(-0.01f);
     }
 
     private void HandleNewGame()

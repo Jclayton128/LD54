@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1797726705057358303
+--- !u!1001 &6261550850292085552
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,35 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1420587125376747544, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: _structureType
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1420587125376747544, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
-      propertyPath: _upgradeOptions.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1420587125376747544, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
-      propertyPath: _upgradeOptions.Array.data[1]
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141770094989344836, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
-      propertyPath: m_Size.x
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141770094989344836, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
-      propertyPath: m_Size.y
-      value: 0.96
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4141770094989344836, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7d3aa7baa2ed0fd44ab40e3585c95a5a, type: 3}
-    - target: {fileID: 4141770094989344836, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 465bfa406129acd4bbcc9fe3aa59a29b, type: 3}
     - target: {fileID: 6670708346335895788, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: m_Name
-      value: Structure_Lab_basic
+      value: Structure_Lab_High
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846771615632370737, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
+      propertyPath: _scienceRate
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 8229481139645184267, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: m_RootOrder
@@ -85,17 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8787016289614013146, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: _desc
-      value: 'Uses adjacent citizens to produce Science slowly.
-
-'
+      value: Rapidly produces Science from adjacent citizens.
       objectReference: {fileID: 0}
     - target: {fileID: 8787016289614013146, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
       propertyPath: _name
-      value: Basic Lab
-      objectReference: {fileID: 0}
-    - target: {fileID: 8787016289614013146, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
-      propertyPath: _mineralCost
-      value: 15
+      value: Advanced  Lab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}

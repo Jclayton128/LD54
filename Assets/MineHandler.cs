@@ -10,6 +10,7 @@ public class MineHandler : MonoBehaviour, IActivatable
     [SerializeField] int _storageMax = 12;
     [SerializeField] float _timeToMine = 3f;
     [SerializeField] float _timeToHarvest = 1f;
+    [SerializeField] bool _isAutoMiner = false;
 
     //state
     int _currentStorage;
@@ -68,7 +69,17 @@ public class MineHandler : MonoBehaviour, IActivatable
             if (_timeRemainingOnCurrentMine < 0)
             {
                 _timeRemainingOnCurrentMine = _timeToMine;
-                _currentStorage++;
+                if (_isAutoMiner)
+                {
+
+                    //TODO particle
+                    ResourceController.Instance.SpendMinerals(-1);
+                }
+                else
+                {
+                    _currentStorage++;
+                }
+
             }
         }
         ConvertStockToBlips();

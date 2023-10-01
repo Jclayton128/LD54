@@ -32,12 +32,13 @@ public class HouseHandler : MonoBehaviour
     {
         _currentPopulation = 2;
         ResourceController.Instance.AddToPopulation(_currentPopulation);
-        Debug.Log($"adding {_currentPopulation} pop. now at {ResourceController.Instance.CurrentPopulation}");
+        //Debug.Log($"adding {_currentPopulation} pop. now at {ResourceController.Instance.CurrentPopulation}");
     }
 
     void Update()
     {
-        _popToAdd = TimeController.Instance.ProductionDeltaTime * _initialGrowthRate * ((_maxPopulation - _currentPopulation) / _maxPopulation) * (_currentPopulation);
+        _popToAdd = TimeController.Instance.ProductionDeltaTime * _initialGrowthRate * TechController.Instance.BonusGrowthRate *
+            ((_maxPopulation - _currentPopulation) / _maxPopulation) * (_currentPopulation);
         _currentPopulation += _popToAdd;
         ResourceController.Instance.AddToPopulation(_popToAdd);
         _factor = _currentPopulation / _maxPopulation;
