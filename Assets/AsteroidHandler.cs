@@ -33,13 +33,12 @@ public class AsteroidHandler : MonoBehaviour
         ExecuteDeath();
     }
 
-    private void ExecuteDeath()
+    public void ExecuteDeath()
     {
         //TODO 
         IsDead = true;
         AsteroidController.Instance.DespawnAsteroid(this);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

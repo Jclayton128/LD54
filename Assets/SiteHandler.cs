@@ -15,7 +15,7 @@ public class SiteHandler : MonoBehaviour
 
     private void Start()
     {
-        BuildInitialStructure();
+        GameController.Instance.EnterGameMode += BuildInitialStructure;
     }
 
     private void BuildInitialStructure()

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class FarmHandler : MonoBehaviour, IActivatable
 {
-    [SerializeField] SpriteRenderer _farmlandSR = null;
 
     //settings
-    [SerializeField] float _timeBetweenStages = 10f;
-    [SerializeField] Sprite[] _cropStages = null;
+    [SerializeField] SpriteRenderer[] _stageBlips = null;
+    [SerializeField] float _timeBetweenStages = 5f;
+    //[SerializeField] int _cropStages = 5;
     
-    [SerializeField] float _timeToHarvest = 5f;
+    [SerializeField] float _timeToHarvest = 20f;
     [SerializeField] int _foodYield = 0;
 
     //state
-    float _timeInStage;
-    int _currentStage;
+    [SerializeField] float _timeInStage;
+    [SerializeField] int _currentStage;
     float _timeSpentHarvesting;
     [SerializeField] float _factor;
     bool _isHarvesting;
@@ -34,6 +34,7 @@ public class FarmHandler : MonoBehaviour, IActivatable
         _factor = 0;
         _isHarvesting = false;
         _isHarvestable = false;
+        ConvertStageIntoBlips();
     }
 
     private void Update()
@@ -56,16 +57,64 @@ public class FarmHandler : MonoBehaviour, IActivatable
             if (_timeInStage >= _timeBetweenStages)
             {
                 _currentStage++;
-                _timeBetweenStages = 0;
-                Debug.Log("stage incremented");
-                if (_currentStage >= _cropStages.Length)
+                _timeInStage = 0;
+                //Debug.Log("stage incremented");
+                if (_currentStage >= _stageBlips.Length)
                 {
-                    _currentStage = _cropStages.Length - 1;
+                    _currentStage = _stageBlips.Length;
                     _isHarvestable = true;
-                    Debug.Log("ready for harvest");
+                    //Debug.Log("ready for harvest");
+                   
                 }
+                //ConvertStageIntoBlips();
                 //_farmlandSR.sprite = _cropStages[_currentStage];
             }
+            ConvertStageIntoBlips();
+        }
+    }
+
+    public void ConvertStageIntoBlips()
+    {
+        switch (_currentStage)
+        {
+            case 0:
+                _stageBlips[0].color = ColorLibrary.Instance.DimResource;
+                _stageBlips[1].color = ColorLibrary.Instance.DimResource;
+                _stageBlips[2].color = ColorLibrary.Instance.DimResource;
+                _stageBlips[3].color = ColorLibrary.Instance.DimResource;
+                break;
+
+            case 1:
+                _stageBlips[0].color = ColorLibrary.Instance.BrightResource;
+                _stageBlips[1].color = ColorLibrary.Instance.DimResource;
+                _stageBlips[2].color = ColorLibrary.Instance.DimResource;
+                _stageBlips[3].color = ColorLibrary.Instance.DimResource;
+                break;
+
+            case 2:
+                _stageBlips[0].color = ColorLibrary.Instance.BrightResource;
+                _stageBlips[1].color = ColorLibrary.Instance.BrightResource;
+                _stageBlips[2].color = ColorLibrary.Instance.DimResource;
+                _stageBlips[3].color = ColorLibrary.Instance.DimResource;
+                break;
+
+            case 3:
+                _stageBlips[0].color = ColorLibrary.Instance.BrightResource;
+                _stageBlips[1].color = ColorLibrary.Instance.BrightResource;
+                _stageBlips[2].color = ColorLibrary.Instance.BrightResource;
+                _stageBlips[3].color = ColorLibrary.Instance.DimResource;
+                break;
+
+            case 4:
+                _stageBlips[0].color = ColorLibrary.Instance.HarvestableResource;
+                _stageBlips[1].color = ColorLibrary.Instance.HarvestableResource;
+                _stageBlips[2].color = ColorLibrary.Instance.HarvestableResource;
+                _stageBlips[3].color = ColorLibrary.Instance.HarvestableResource;
+                break;
+
+
+
+
         }
     }
 

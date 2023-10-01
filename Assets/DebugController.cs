@@ -19,7 +19,7 @@ public class DebugController : MonoBehaviour
     {
         if (GameController.Instance.IsAttackMode)
         {
-            _ttaTMP.text = $"Peace in: {GameController.Instance.TimeRemainingOnAttack}";
+            _ttaTMP.text = $"Attack in Progress";
         }
         else
         {

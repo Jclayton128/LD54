@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    enum Mode { Title, Rotate, Upgrade, Credits, End, Attack}
+    public Action<Mode> ModeChanged;
+    public enum Mode { Title, Rotate, Upgrade, Credits, End, Attack, Inspection}
 
     public Action<int> SiteSelectionChanged;
     public Action<int> UpgradeRotationRequired;
@@ -22,6 +23,8 @@ public class UIController : MonoBehaviour
     [SerializeField] PanelDriver _endPanel = null;
     [SerializeField] RotationHandler _earthRotationHandler = null;
     [SerializeField] SpriteRenderer _earth = null;
+    [SerializeField] RotationHandler _endRotationHandler = null;
+    [SerializeField] EndPanelDriver _endPanelDriver = null;
 
     //state
     bool _shouldEarthBeRotating = false;
@@ -76,8 +79,10 @@ public class UIController : MonoBehaviour
         CameraController.Instance.SetNormalZoom();
     }
 
+
     private void SetPanelsForCurrentMode()
     {
+        ModeChanged?.Invoke(_currentMode);
         foreach (var panel in _panels)
         {
             panel.ShowHidePanel(false);
@@ -130,6 +135,7 @@ public class UIController : MonoBehaviour
             case Mode.End:
                 _canRotate = true;
                 GameController.Instance.ExitGameMode();
+                _endPanelDriver.PopulateSelf();
                 _endPanel.ShowHidePanel(true);
                 _earth.color = ColorLibrary.Instance.HighlightedStructure;
                 break;
@@ -156,6 +162,12 @@ public class UIController : MonoBehaviour
         {
             //Hold to activate!
             SiteController.Instance.CurrentSite.BeginActivation();
+        }
+        else if (_currentMode == Mode.End)
+        {
+            _currentMode = Mode.Title;
+            SetPanelsForCurrentMode();
+            CameraController.Instance.FloatToTitle();
         }
     }
 
@@ -217,6 +229,11 @@ public class UIController : MonoBehaviour
             case Mode.Upgrade:
                 if (dir < 0) MoveUpgradeLeft();
                 if (dir > 0) MoveUpgradeRight();
+                break;
+
+            case Mode.End:
+                if (dir < 0) _endRotationHandler.CommandRotation(-1);
+                if (dir > 0) _endRotationHandler.CommandRotation(1);
                 break;
 
             default: break;

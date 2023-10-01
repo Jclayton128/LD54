@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: _upgradeOptions.Array.data[0]
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5256978284321519343, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
+      propertyPath: _initialGrowthRate
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7827183965088517063, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: m_Size.x
       value: 0.96

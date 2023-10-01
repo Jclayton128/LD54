@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -711347635809585037, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _storageMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -711347635809585037, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _timeToMine
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -711347635809585037, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _timeToHarvest
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 361095319185386763, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: m_RootOrder
       value: 0

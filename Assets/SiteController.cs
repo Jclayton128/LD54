@@ -25,11 +25,14 @@ public class SiteController : MonoBehaviour
 
     private void Start()
     {
-        GameController.Instance.EnterGameMode += HighlightCurrentSite;
+        GameController.Instance.EnterGameMode += HandleEnterGameMode;
         UIController.Instance.SiteSelectionChanged += HandleSiteSelectionChanged;
     }
 
-
+    public void HandleEnterGameMode()
+    {
+        Invoke(nameof(HighlightCurrentSite), 0.01f);
+    }
 
     private void HandleSiteSelectionChanged(int dir)
     {

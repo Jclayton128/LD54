@@ -6,6 +6,10 @@ public class ColorLibrary : MonoBehaviour
 {
     public static ColorLibrary Instance { get; private set; }
 
+    public Color DimResource = Color.grey;
+    public Color BrightResource = Color.white;
+    public Color HarvestableResource = Color.white;
+
     //settings
     public Color HighlightedStructure = Color.white;
     public Color LowlightedStructure = Color.grey;

@@ -12,12 +12,12 @@ public class GameController : MonoBehaviour
 
     //state
     int _attackWavesEndured;
-    public float Difficulty => 1 + (float)_attackWavesEndured/3;
+    public int Difficulty => 1 + _attackWavesEndured;
     float _timeUntilNextAttack = 30f;
-    float _timeRemainingOnAttack;
-    public float TimeRemainingOnAttack => _timeRemainingOnAttack;
+    //float _timeRemainingOnAttack;
+    //public float TimeRemainingOnAttack => _timeRemainingOnAttack;
     public float TimeUntilNextAttack => _timeUntilNextAttack;
-    float _attackDuration = 15f;
+    //float _attackDuration = 15f;
     float _timeBetweenAttacks = 45f;
     bool _isInGame = false;
     public bool IsInGame => _isInGame;
@@ -50,6 +50,13 @@ public class GameController : MonoBehaviour
         
     }
 
+    public void CommandGameOver()
+    {
+        AsteroidController.Instance.StopSpawningAsteroids();
+        UIController.Instance.EnterEndGame();
+    }
+
+
     private void Update()
     {
         if (!_isInGame) return;
@@ -63,20 +70,20 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            _timeRemainingOnAttack -= Time.deltaTime;
-            if (_timeRemainingOnAttack < 0)
-            {
-                _timeUntilNextAttack = _timeBetweenAttacks;
-                _isAttackMode = false;
-                ExitedAttackMode?.Invoke();
-            }
+            //_timeRemainingOnAttack -= Time.deltaTime;
+            //if (_timeRemainingOnAttack < 0)
+            //{
+            //    _timeUntilNextAttack = _timeBetweenAttacks;
+            //    _isAttackMode = false;
+            //    ExitedAttackMode?.Invoke();
+            //}
         }
 
     }
 
     private void EnterAttackMode()
     {
-        _timeRemainingOnAttack = _attackDuration;
+        //_timeRemainingOnAttack = _attackDuration;
         _isAttackMode = true;
         UIController.Instance.EnterAttackMode();
         TimeController.Instance.SetProductionTimeRate(0);

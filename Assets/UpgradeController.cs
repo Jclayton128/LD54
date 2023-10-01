@@ -130,6 +130,10 @@ public class UpgradeController : MonoBehaviour
         {
             _canBuildHere = false;
         }
+        if (SiteController.Instance.CurrentSite.CurrentStructure.StructureType == _currentOptionTypes[_currentUpgrade])
+        {
+            _canBuildHere = false;
+        }
         _upgradeDescriptionDriver.LoadDescription(brochure, isSame, _canAffordMineral, _canAffordScience);
         _upgradePanelDriver.SetCheckmark(_canAffordMineral, _canAffordScience, _canBuildHere);
     }
