@@ -1319,6 +1319,7 @@ MonoBehaviour:
   _checkSprite: {fileID: 21300000, guid: 522d8c1f2210c5945bbd423376925126, type: 3}
   _mineralSprite: {fileID: 21300000, guid: facbe90573acf4d4188cbc4d2f5cdf38, type: 3}
   _scienceSprite: {fileID: 21300000, guid: 68e4cff4ca61c5641bb2fa1c2aea7ae7, type: 3}
+  _negativeXSprite: {fileID: 21300000, guid: b2455f3417f9b8e4fbccaf3a4002bcd4, type: 3}
 --- !u!114 &290168737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,6 +2381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Site_10
       objectReference: {fileID: 0}
+    - target: {fileID: 3785015969557978038, guid: 561af834d21344b44a2892775c7562ae, type: 3}
+      propertyPath: GeneralSiteType
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7546367121723825059, guid: 561af834d21344b44a2892775c7562ae, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -2480,7 +2485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785015969557978038, guid: 561af834d21344b44a2892775c7562ae, type: 3}
       propertyPath: GeneralSiteType
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7546367121723825059, guid: 561af834d21344b44a2892775c7562ae, type: 3}
       propertyPath: m_IsTrigger
@@ -4369,7 +4374,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1106106955
 Canvas:
   m_ObjectHideFlags: 0
@@ -4874,6 +4879,7 @@ MonoBehaviour:
   - {fileID: 1491798794280965351, guid: 6423cb436c092ff4b97c725da899b6f7, type: 3}
   - {fileID: 1491798794280965351, guid: 83f2e48f9ab86f24781e26f3730ac4ba, type: 3}
   - {fileID: 1491798794280965351, guid: 40e5a144ab3da2a45971d252de76e52e, type: 3}
+  - {fileID: 8147732402205012650, guid: 6f3e419c3e299cd4cbd3056ce567a37f, type: 3}
 --- !u!1001 &1253577434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5149,7 +5155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785015969557978038, guid: 561af834d21344b44a2892775c7562ae, type: 3}
       propertyPath: GeneralSiteType
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7546367121723825059, guid: 561af834d21344b44a2892775c7562ae, type: 3}
       propertyPath: m_IsTrigger
@@ -6368,6 +6374,7 @@ MonoBehaviour:
   _upgradePanelDriver: {fileID: 290168736}
   _upgradeDescriptionDriver: {fileID: 1133229762}
   _currentUpgrade: 0
+  _canBuildHere: 0
 --- !u!114 &1561011146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6414,9 +6421,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnRadius: 18
   _asteroidPrefab: {fileID: 7524928715795198771, guid: 3edc0aacfbe2a5644818c9b60fb3afd2, type: 3}
-  _speed: 1
-  _minSize: 1
-  _maxSize: 5
+  _speed: 2
+  _minSize: 4
+  _maxSize: 20
+  _averageTimeBetweenSpawns: 5
+  _isSpawning: 0
 --- !u!114 &1561011149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6456,9 +6465,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561011141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2ea0a4e176465478790f4add916d48, type: 3}
+  m_Script: {fileID: 11500000, guid: 96ad807ccd9053040986c68bb884359d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 4024113924230153687, guid: a8111ea41c1acb44f899eae4e47c8573, type: 3}
 --- !u!1 &1581584002
 GameObject:
   m_ObjectHideFlags: 0
@@ -6670,10 +6680,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 960}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

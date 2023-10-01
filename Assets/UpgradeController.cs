@@ -20,6 +20,7 @@ public class UpgradeController : MonoBehaviour
     bool _shouldBeMoving = false;
     bool _canAffordMineral;
     bool _canAffordScience;
+    [SerializeField] bool _canBuildHere;
     List<StructureLibrary.Structures> _currentOptionTypes;
 
 
@@ -67,7 +68,7 @@ public class UpgradeController : MonoBehaviour
 
     public void RequestUpgradeInitiation()
     {
-        if (!_canAffordMineral || !_canAffordScience) return;
+        if (!_canAffordMineral || !_canAffordScience || !_canBuildHere) return;
         //TODO play negative sound
         _isUpgrading = true;
         _currentFactor = 0;
@@ -124,8 +125,13 @@ public class UpgradeController : MonoBehaviour
         StructureBrochure brochure = _currentOptionBrochures[_currentUpgrade];
         _canAffordMineral = ResourceController.Instance.CheckMineral(brochure.MineralCost);
         _canAffordScience = ResourceController.Instance.CheckScience(brochure.ScienceCost); ;
+        _canBuildHere = true;
+        if (SiteController.Instance.CurrentSite.CurrentStructure.StructureType == StructureLibrary.Structures.Crater)
+        {
+            _canBuildHere = false;
+        }
         _upgradeDescriptionDriver.LoadDescription(brochure, isSame, _canAffordMineral, _canAffordScience);
-        _upgradePanelDriver.SetCheckmark(_canAffordMineral, _canAffordScience);
+        _upgradePanelDriver.SetCheckmark(_canAffordMineral, _canAffordScience, _canBuildHere);
     }
 
     private void Update()

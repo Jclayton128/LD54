@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour
     [SerializeField] PanelDriver[] _upgradePanel = null;
     [SerializeField] PanelDriver _endPanel = null;
     [SerializeField] RotationHandler _earthRotationHandler = null;
+    [SerializeField] SpriteRenderer _earth = null;
 
     //state
     bool _shouldEarthBeRotating = false;
@@ -56,7 +57,8 @@ public class UIController : MonoBehaviour
         _currentMode = Mode.Attack;
         SetPanelsForCurrentMode();
         CameraController.Instance.SetAttackZoom();
-        _canRotate = false;
+        //_canRotate = false;
+        _canRotate = true;
     }
 
     public void ExitAttackMode()
@@ -85,11 +87,13 @@ public class UIController : MonoBehaviour
             case Mode.Credits:
                 _canRotate = false;
                 _creditsPanel.ShowHidePanel(true);
+                _earth.color = ColorLibrary.Instance.HighlightedStructure;
                 break;
 
             case Mode.Title:
                 _canRotate = false;
                 _titlePanel.ShowHidePanel(true);
+                _earth.color = ColorLibrary.Instance.HighlightedStructure;
                 break;
 
             case Mode.Rotate:
@@ -98,6 +102,7 @@ public class UIController : MonoBehaviour
                     panel.ShowHidePanel(true);
                 }
                 _canRotate = true;
+                _earth.color = ColorLibrary.Instance.HighlightedStructure;
                 break;
 
             case Mode.Upgrade:
@@ -110,20 +115,23 @@ public class UIController : MonoBehaviour
                 {
                     panel.ShowHidePanel(true);
                 }
+                _earth.color = ColorLibrary.Instance.LowlightedStructure;
                 break;
 
             case Mode.Attack:
-                _canRotate = false;
+                //_canRotate = false;
                 foreach (var panel in _attackPanels)
                 {
                     panel.ShowHidePanel(true);
                 }
+                _earth.color = ColorLibrary.Instance.HighlightedStructure;
                 break;
 
             case Mode.End:
                 _canRotate = true;
                 GameController.Instance.ExitGameMode();
                 _endPanel.ShowHidePanel(true);
+                _earth.color = ColorLibrary.Instance.HighlightedStructure;
                 break;
 
             default: break;
@@ -200,6 +208,7 @@ public class UIController : MonoBehaviour
         if (!_canRotate) return;
         switch (_currentMode)
         {
+            case Mode.Attack:
             case Mode.Rotate:
                 if (dir < 0) MoveCursorLeft();
                 if (dir > 0) MoveCursorRight();

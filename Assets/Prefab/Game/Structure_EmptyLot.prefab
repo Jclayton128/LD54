@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070898994320385132, guid: 9b9873e94490a5e46a60b91661b8a2ca, type: 3}
       propertyPath: _upgradeOptions.Array.data[4]
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2070898994320385132, guid: 9b9873e94490a5e46a60b91661b8a2ca, type: 3}
       propertyPath: _upgradeOptions.Array.data[5]

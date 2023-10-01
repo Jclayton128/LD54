@@ -16,6 +16,7 @@ public class UpgradePanelDriver : MonoBehaviour
     [SerializeField] Sprite _checkSprite = null;
     [SerializeField] Sprite _mineralSprite = null;
     [SerializeField] Sprite _scienceSprite = null;
+    [SerializeField] Sprite _negativeXSprite = null;
 
     //state
     Tween _upgradeBar;
@@ -93,9 +94,13 @@ public class UpgradePanelDriver : MonoBehaviour
         _checkImage.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    public void SetCheckmark(bool canAffordMineral, bool canAffordScience)
+    public void SetCheckmark(bool canAffordMineral, bool canAffordScience, bool canBuildHere)
     {
-        if (!canAffordMineral)
+        if (!canBuildHere)
+        {
+            _checkImage.sprite = _negativeXSprite;
+        }
+        else if (!canAffordMineral)
         {
             _checkImage.sprite = _mineralSprite;
         }

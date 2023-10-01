@@ -10,6 +10,7 @@ public class AsteroidHandler : MonoBehaviour
 
     //state
     int _healthRemaining;
+     public bool IsDead;
 
     public void Initialize()
     {
@@ -21,8 +22,9 @@ public class AsteroidHandler : MonoBehaviour
     {
         _healthRemaining = health;
         
-        Vector3 dir = (Vector3.zero - transform.position);
+        Vector3 dir = (Vector3.zero - transform.position).normalized;
         _rb.velocity = dir * speed;
+        IsDead = false;
     }
 
     public void HandleStructureImpact()
@@ -34,15 +36,24 @@ public class AsteroidHandler : MonoBehaviour
     private void ExecuteDeath()
     {
         //TODO 
+        IsDead = true;
         AsteroidController.Instance.DespawnAsteroid(this);
     }
 
-    public void HandleBulletImpact()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _healthRemaining--;
-        if (_healthRemaining <= 0)
+        ProjectileHandler ph;
+        if (collision.TryGetComponent<ProjectileHandler>(out ph))
         {
-            ExecuteDeath();
+
+            _healthRemaining -= ph.Damage;
+            //Debug.Log($"bullet impact. health left: {_healthRemaining}");
+            ph.ExpireBullet();
+            if (_healthRemaining <= 0)
+            {
+                ExecuteDeath();
+            }
         }
     }
 }

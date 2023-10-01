@@ -63,6 +63,13 @@ public class SiteHandler : MonoBehaviour
                     GetPrefabFromMenu(StructureLibrary.Structures.Lab_Basic).GetComponent<StructureHandler>(),
                     transform);
                 break;
+
+            case SiteController.GeneralSites.Military:
+                _currentStructure =
+                    Instantiate(StructureLibrary.Instance.
+                    GetPrefabFromMenu(StructureLibrary.Structures.Turret_Basic).GetComponent<StructureHandler>(),
+                    transform);
+                break;
         }
     }
 
@@ -95,7 +102,17 @@ public class SiteHandler : MonoBehaviour
         AsteroidHandler ah;
         if (collision.TryGetComponent<AsteroidHandler>(out ah))
         {
+            if (_currentStructure.StructureType != StructureLibrary.Structures.Crater)
+            {
+                _currentHealth--;
+                if (_currentHealth <= 0)
+                {
+                    ReceiveNewStructure(StructureLibrary.Structures.Crater);
+                }
+            }
             ah.HandleStructureImpact();
+            //TODO particle FX upon impact.
+            //TODO screen shake upon impact
         }
     }
 

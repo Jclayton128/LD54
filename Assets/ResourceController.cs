@@ -36,7 +36,7 @@ public class ResourceController : MonoBehaviour
 
     private void InitalizeResources()
     {
-        Debug.Log($"Resetting resources");
+        //Debug.Log($"Resetting resources");
         _currentMinerals = _startingMinerals;
         _currentScience = _startingScience;
         _currentFood = _startingFood;
