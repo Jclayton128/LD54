@@ -65,7 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _mineralCost
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176440091389372761, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
+      propertyPath: _scienceCost
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5067618148371530651, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _structureType
@@ -82,6 +86,10 @@ PrefabInstance:
     - target: {fileID: 5256978284321519343, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: _maxPopulation
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256978284321519343, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
+      propertyPath: _initialGrowthRate
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7827183965088517063, guid: a54d1d9fc52a61d4d8f80fec100657be, type: 3}
       propertyPath: m_Sprite

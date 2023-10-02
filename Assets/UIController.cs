@@ -97,13 +97,13 @@ public class UIController : MonoBehaviour
             case Mode.Credits:
                 _canRotate = false;
                 _creditsPanel.ShowHidePanel(true);
-                _earth.color = ColorLibrary.Instance.HighlightedStructure;
+                _earth.color = ColorLibrary.Instance.LowlightedEarth;
                 break;
 
             case Mode.Title:
                 _canRotate = false;
                 _titlePanel.ShowHidePanel(true);
-                _earth.color = ColorLibrary.Instance.HighlightedStructure;
+                _earth.color = ColorLibrary.Instance.LowlightedEarth;
                 break;
 
             case Mode.Rotate:
@@ -112,7 +112,7 @@ public class UIController : MonoBehaviour
                     panel.ShowHidePanel(true);
                 }
                 _canRotate = true;
-                _earth.color = ColorLibrary.Instance.HighlightedStructure;
+                _earth.color = ColorLibrary.Instance.LowlightedEarth;
                 break;
 
             case Mode.Upgrade:

@@ -14,18 +14,20 @@ public class LabHandler : MonoBehaviour
 
     //state
     [SerializeField] float _scienceStep;
+    ParticleSystem _ps;
 
     // Start is called before the first frame update
     void Awake()
     {
         _lh = transform.parent.GetComponent<LabHelper>();
+        _ps = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()
     {
         GameController.Instance.EnterGameMode += HandleNewGame;
         if (_addsBonusDamage) TechController.Instance.ModifyBonusDamage(1);
-        if (_addsBonusGrowth) TechController.Instance.ModifyGrowthRate(0.005f);
+        if (_addsBonusGrowth) TechController.Instance.ModifyGrowthRate(0.05f);
     }
 
     private void OnDestroy()
@@ -49,6 +51,7 @@ public class LabHandler : MonoBehaviour
         {
             _scienceStep = 0;
             //TODO particle effect
+            _ps.Emit(1);
             ResourceController.Instance.SpendScience(-1);
         }
     }

@@ -77,11 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _mineralCost
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6421385277433137649, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _scienceCost
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8971041557948222407, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: m_Name

@@ -12,6 +12,7 @@ public class FarmHandler : MonoBehaviour, IActivatable
     
     [SerializeField] float _timeToHarvest = 20f;
     [SerializeField] int _foodYield = 0;
+    [SerializeField] CuePulser _harvestCue = null;
 
     //state
     [SerializeField] float _timeInStage;
@@ -20,6 +21,15 @@ public class FarmHandler : MonoBehaviour, IActivatable
     [SerializeField] float _factor;
     bool _isHarvesting;
     bool _isHarvestable;
+    ParticleSystem _ps;
+    ParticleSystem.MainModule _psem;
+    float _blipTime;
+
+    private void Awake()
+    {
+        _ps = GetComponentInChildren<ParticleSystem>();
+        _psem = _ps.main;
+    }
 
     private void Start()
     {
@@ -28,6 +38,7 @@ public class FarmHandler : MonoBehaviour, IActivatable
 
     private void ResetCrop()
     {
+        _harvestCue.gameObject.SetActive(false);
         _timeInStage = 0;
         _currentStage = 0;
         _timeSpentHarvesting = 0;
@@ -43,10 +54,20 @@ public class FarmHandler : MonoBehaviour, IActivatable
         {
             _timeSpentHarvesting += TimeController.Instance.WallDeltaTime;
             _factor = _timeSpentHarvesting / _timeToHarvest;
+            _blipTime += TimeController.Instance.WallDeltaTime;
+
+            if (_blipTime > 0.25)
+            {
+                _ps.Emit(1);
+                //ResourceController.Instance.SpendFood(-1 * _foodYield);
+                _blipTime = 0;
+            }
+
             //hook into UI
             if (_factor >= 1)
             {
-                ResourceController.Instance.SpendFood(-1 * _foodYield);
+                ResourceController.Instance.SpendFood(-1 * _foodYield*10);
+                _ps.Emit(_foodYield *2);
                 ResetCrop();
                 //TODO play a crop sound
             }
@@ -63,6 +84,7 @@ public class FarmHandler : MonoBehaviour, IActivatable
                 {
                     _currentStage = _stageBlips.Length;
                     _isHarvestable = true;
+                    _harvestCue.gameObject.SetActive(true);
                     //Debug.Log("ready for harvest");
                    
                 }
@@ -122,12 +144,14 @@ public class FarmHandler : MonoBehaviour, IActivatable
     {
         Debug.Log("Activate");
         if (!_isHarvestable) return;
-        _isHarvesting = true; 
+        _isHarvesting = true;
+
     }
 
     public void Deactivate()
     {
         Debug.Log("Deactivate");
         _isHarvesting = false;
+        _blipTime = 0;
     }
 }

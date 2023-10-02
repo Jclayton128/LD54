@@ -16,11 +16,27 @@ public class CountdownController : MonoBehaviour
     {
         if (GameController.Instance.IsAttackMode)
         {
-            _ttaTMP.text = $"Imminent Rock Strikes!";
+            _ttaTMP.text = $"DANGER!";
+            _ttaTMP.color = Color.red;
         }
         else
         {
-            _ttaTMP.text = $"Rocks Inbound: {Mathf.RoundToInt(GameController.Instance.TimeUntilNextAttack)}";
+            if ((GameController.Instance.TimeUntilNextAttack) > 14)
+            {
+                _ttaTMP.text = " ";
+            }
+            else if ((GameController.Instance.TimeUntilNextAttack) < 5)
+            {
+                _ttaTMP.text = $"Imminent Rock Strike!";
+                _ttaTMP.color = Color.yellow;
+            }
+            else 
+            {
+                _ttaTMP.text = $"Inbound Rocks Detected!";
+                _ttaTMP.color = Color.white;
+            }
+
+            
         }
 
     }   

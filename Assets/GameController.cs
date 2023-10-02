@@ -66,6 +66,12 @@ public class GameController : MonoBehaviour
         if (!_isAttackMode)
         {
             _timeUntilNextAttack -= Time.deltaTime;
+
+            if (!TutorialController.instance.EndedTutorial)
+            {
+                _timeUntilNextAttack = 15;
+            }
+
             if (_timeUntilNextAttack < 0)
             {
                 EnterAttackMode();
@@ -91,6 +97,11 @@ public class GameController : MonoBehaviour
         UIController.Instance.EnterAttackMode();
         TimeController.Instance.SetProductionTimeRate(0);
         EnteredAttackMode?.Invoke();
+    }
+
+    internal void ForceImminentAttack()
+    {
+        _timeUntilNextAttack = 13f;
     }
 
     private void EndAttackMode()

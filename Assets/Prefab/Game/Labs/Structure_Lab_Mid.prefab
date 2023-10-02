@@ -87,5 +87,13 @@ PrefabInstance:
       propertyPath: _name
       value: Tech Lab
       objectReference: {fileID: 0}
+    - target: {fileID: 8787016289614013146, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
+      propertyPath: _mineralCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787016289614013146, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}
+      propertyPath: _scienceCost
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd5f71478f5fa545b4c565437a7baaf, type: 3}

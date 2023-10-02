@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7398176540962165001, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: _mineralCost
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7502748099243388174, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: _scanRange

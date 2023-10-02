@@ -75,9 +75,16 @@ public class SiteHandler : MonoBehaviour
 
     public void ReceiveNewStructure(StructureLibrary.Structures newStructure)
     {
+        float carryoverPop = 0;
         if (_currentStructure)
         {
+            HouseHandler hh;
+            if (_currentStructure.TryGetComponent<HouseHandler>(out hh))
+            {
+                carryoverPop = hh.Population;
 
+            }
+            ResourceController.Instance.AddToPopulation(carryoverPop);
             Destroy(_currentStructure.gameObject);
         }
 
@@ -85,6 +92,12 @@ public class SiteHandler : MonoBehaviour
             Instantiate(StructureLibrary.Instance.
             GetPrefabFromMenu(newStructure).GetComponent<StructureHandler>(),
             transform);
+
+        HouseHandler hh2;
+        if (_currentStructure.TryGetComponent<HouseHandler>(out hh2))
+        {
+            hh2.AddPopulation(carryoverPop);
+        }
     }
     public void Highlight()
     {

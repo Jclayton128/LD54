@@ -71,6 +71,14 @@ PrefabInstance:
       propertyPath: _name
       value: Large Mine
       objectReference: {fileID: 0}
+    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _mineralCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _scienceCost
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3144989033157866732, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: m_Name
       value: Structure_Mine_Mid_Storage

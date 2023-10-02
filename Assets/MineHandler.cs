@@ -11,12 +11,19 @@ public class MineHandler : MonoBehaviour, IActivatable
     [SerializeField] float _timeToMine = 3f;
     [SerializeField] float _timeToHarvest = 1f;
     [SerializeField] bool _isAutoMiner = false;
+    [SerializeField] CuePulser _harvestCue = null;
 
     //state
     int _currentStorage;
     float _timeRemainingOnCurrentMine;
     float _timeRemainingOnHarvest;
     bool _isHarvesting = false;
+    ParticleSystem _ps;
+
+    private void Awake()
+    {
+        _ps = GetComponentInChildren<ParticleSystem>();
+    }
 
     private void Start()
     {
@@ -59,12 +66,22 @@ public class MineHandler : MonoBehaviour, IActivatable
                 _timeRemainingOnHarvest = _timeToHarvest;
                 _currentStorage--; 
                 ResourceController.Instance.SpendMinerals(-1);
-                if (_currentStorage <= 0) Deactivate();
+                _ps.Emit(1);
+                if (_currentStorage <= 0)
+                {
+                    _harvestCue.gameObject.SetActive(false);
+                    Deactivate();
+                }
             }
         }
         else
         {
-            if (_currentStorage >= _storageMax) return;
+            if (_currentStorage >= _storageMax) 
+            { 
+                _harvestCue.gameObject.SetActive(true);
+                return;
+            }
+
             _timeRemainingOnCurrentMine -= TimeController.Instance.ProductionDeltaTime;
             if (_timeRemainingOnCurrentMine < 0)
             {

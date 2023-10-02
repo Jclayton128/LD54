@@ -14,11 +14,19 @@ public class HouseHandler : MonoBehaviour
     [SerializeField] float _currentPopulation;
     public float Population => _currentPopulation;
     [SerializeField] float _popToAdd;
+    ParticleSystem _ps;
+    float _blip;
 
     private void Start()
     {
         //GameController.Instance.EnterGameMode += HandleNewGame;
         HandleNewGame();
+        _ps = GetComponentInChildren<ParticleSystem>();
+    }
+
+    public void AddPopulation(float amount)
+    {
+        _currentPopulation += amount;
     }
 
     private void HandleNewGame()
@@ -37,9 +45,17 @@ public class HouseHandler : MonoBehaviour
 
     void Update()
     {
-        _popToAdd = TimeController.Instance.ProductionDeltaTime * _initialGrowthRate * TechController.Instance.BonusGrowthRate *
+        _popToAdd = TimeController.Instance.ProductionDeltaTime * (_initialGrowthRate + TechController.Instance.BonusGrowthRate) *
             ((_maxPopulation - _currentPopulation) / _maxPopulation) * (_currentPopulation);
         _currentPopulation += _popToAdd;
+        
+        _blip += _popToAdd;
+        if (_blip > 1)
+        {
+            _blip = 0;
+            _ps.Emit(1);
+        }
+
         ResourceController.Instance.AddToPopulation(_popToAdd);
         _factor = _currentPopulation / _maxPopulation;
         ConvertStockToBlips();

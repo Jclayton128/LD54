@@ -71,6 +71,14 @@ PrefabInstance:
       propertyPath: _name
       value: Moho Mine
       objectReference: {fileID: 0}
+    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _mineralCost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1065070507198101210, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
+      propertyPath: _scienceCost
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3144989033157866732, guid: 57570a1f3ed0b494aadea8390cef2e61, type: 3}
       propertyPath: m_Name
       value: Structure_Mine_High_Rate
