@@ -8,13 +8,17 @@ public class SiteHandler : MonoBehaviour
 
 
     //state
-    [SerializeField] int _currentHealth = 1;
     public SiteController.GeneralSites GeneralSiteType = SiteController.GeneralSites.Empty;
     [SerializeField] StructureHandler _currentStructure;
     public StructureHandler CurrentStructure=> _currentStructure;
+    HouseHandler _hh;
 
     private void Start()
     {
+        Vector3 pos = Vector3.zero;
+        pos.y = Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad) * StructureLibrary.Instance.Radius;
+        pos.x = Mathf.Sin(-transform.rotation.eulerAngles.z * Mathf.Deg2Rad) * StructureLibrary.Instance.Radius;
+        transform.position = pos;
         GameController.Instance.EnterGameMode += BuildInitialStructure;
     }
 
@@ -41,6 +45,7 @@ public class SiteHandler : MonoBehaviour
                     Instantiate(StructureLibrary.Instance.
                     GetPrefabFromMenu(StructureLibrary.Structures.House_Basic).GetComponent<StructureHandler>(),
                     transform);
+                _hh = GetComponentInChildren<HouseHandler>();
                 break;
 
             case SiteController.GeneralSites.Farm:
@@ -84,7 +89,7 @@ public class SiteHandler : MonoBehaviour
                 carryoverPop = hh.Population;
 
             }
-            ResourceController.Instance.AddToPopulation(carryoverPop);
+            //ResourceController.Instance.AddToPopulation(carryoverPop);
             Destroy(_currentStructure.gameObject);
         }
 
@@ -117,16 +122,22 @@ public class SiteHandler : MonoBehaviour
         {
             if (_currentStructure.StructureType != StructureLibrary.Structures.Crater)
             {
-                _currentHealth--;
-                if (_currentHealth <= 0)
-                {
-                    ReceiveNewStructure(StructureLibrary.Structures.Crater);
-                }
+                //ModifyHealth(-1 * ah.Damage);
+                _hh.HandleImpact(ah.Damage);
             }
             ah.HandleStructureImpact();
             //TODO particle FX upon impact.
             //TODO screen shake upon impact
         }
+    }
+
+    public void ModifyHealth(int amountToAdd)
+    {
+        //_currentHealth += amountToAdd;
+        //if (_currentHealth <= 0)
+        //{
+        //    ReceiveNewStructure(StructureLibrary.Structures.Crater);
+        //}
     }
 
     public void BeginActivation()

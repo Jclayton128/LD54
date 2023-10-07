@@ -45,8 +45,12 @@ public class LabHandler : MonoBehaviour
 
     private void Update()
     {
+        //_scienceStep += _scienceRate * TimeController.Instance.ProductionDeltaTime *
+        //    _lh.AdjacentPopulation;
+        int rand = UnityEngine.Random.Range(0, 2);
+        if (rand == 0) return;
         _scienceStep += _scienceRate * TimeController.Instance.ProductionDeltaTime *
-            _lh.AdjacentPopulation;
+            ResourceController.Instance.CurrentPopulation;
         if (_scienceStep > 1)
         {
             _scienceStep = 0;

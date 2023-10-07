@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3464192693323022933
 Transform:
   m_ObjectHideFlags: 0
@@ -5178,12 +5178,22 @@ MonoBehaviour:
   - {fileID: 6757328841136490091}
   - {fileID: 1037119729192626454}
   - {fileID: 771277072243142978}
-  _maxPopulation: 100
-  _initialGrowthRate: 0.01
+  _sr: {fileID: 7827183965088517063}
+  _initialGrowthRate: 0.005
+  _citySprites:
+  - {fileID: 21300000, guid: 225f24c2c8f12d045a62893c4b9fed31, type: 3}
+  - {fileID: 21300000, guid: 8650c69bc52f1ba49bd007bda5b15003, type: 3}
+  - {fileID: 21300000, guid: 8c6246f9f83a17145afab0930ffb8552, type: 3}
+  - {fileID: 21300000, guid: 8437235e5c5873b47b3cce3ad385f969, type: 3}
   _currentPopulation: 2
   _popToAdd: 0
 --- !u!4 &2869293047919866504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9025005440230937983, guid: 9b9873e94490a5e46a60b91661b8a2ca, type: 3}
+  m_PrefabInstance: {fileID: 6552320135400269815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7827183965088517063 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3922980702941883440, guid: 9b9873e94490a5e46a60b91661b8a2ca, type: 3}
   m_PrefabInstance: {fileID: 6552320135400269815}
   m_PrefabAsset: {fileID: 0}

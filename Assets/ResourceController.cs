@@ -14,6 +14,7 @@ public class ResourceController : MonoBehaviour
     [SerializeField] int _startingFood = 100;
     [SerializeField] ResourceCountDriver _rsc = null;
     [SerializeField] float _foodConsumeRate = 0.001f; //food per second per person
+    [SerializeField] List<HouseHandler> _houses = new List<HouseHandler>();
 
     //state
     [SerializeField] float _foodDemand;
@@ -21,7 +22,7 @@ public class ResourceController : MonoBehaviour
     public int CurrentMinerals => _currentMinerals;
     int _currentScience;
     public int CurrentScience => _currentScience;
-    float _currentPop;
+    [SerializeField] float _currentPop;
     public float CurrentPopulation => _currentPop;
     int _currentFood;
     public int CurrentFood => _currentFood;
@@ -45,6 +46,14 @@ public class ResourceController : MonoBehaviour
     private void Start()
     {
         GameController.Instance.EnterGameMode += InitalizeResources;
+    }
+
+    public void RegisterHouse(HouseHandler newHouse)
+    {
+        if (!_houses.Contains(newHouse))
+        {
+            _houses.Add(newHouse);
+        }
     }
 
     private void InitalizeResources()
@@ -82,16 +91,27 @@ public class ResourceController : MonoBehaviour
             //TODO particle, sound of consuming food
             _foodDemand = 0;
             _currentFood -= 1;
+            Mathf.Clamp(_currentFood, 0, 99999);
             _rsc.SetFood(_currentFood);
-            if (_currentFood <= 0)
-            {
-                WasLossByFoodShortage = true;
-                GameController.Instance.CommandGameOver();
-            }
+            //if (_currentFood <= 0)
+            //{
+            //    WasLossByFoodShortage = true;
+            //    GameController.Instance.CommandGameOver();
+            //}
         }
 
-        
-    
+        _currentPop = 0;
+        foreach (var house in _houses)
+        {
+            _currentPop += house.Population;
+            _rsc.SetPopulation(Mathf.RoundToInt(_currentPop));
+        }
+        if (YearsSurvived > 1 && _currentPop < 1)
+        {
+            WasLossByFoodShortage = false;
+            GameController.Instance.CommandGameOver();
+        }
+
     }
 
     public void SpendMinerals(int mineralBill)

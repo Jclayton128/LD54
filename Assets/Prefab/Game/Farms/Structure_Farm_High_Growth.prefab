@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2182567682104815845, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _timeToHarvest
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2182567682104815845, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _timeBetweenStages
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3700383667429040947, guid: c151d4e7ab6639249b7f1c9624b68c48, type: 3}
       propertyPath: _structureType

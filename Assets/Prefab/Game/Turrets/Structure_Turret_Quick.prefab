@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: _shotSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5459514642375220821, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
+      propertyPath: _timeBetweenShots
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7398176540962165001, guid: bfea147d456d7224b856298c3b93c0e7, type: 3}
       propertyPath: _desc
       value: Short-ranged, and very quick to fire.

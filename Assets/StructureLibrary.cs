@@ -20,6 +20,8 @@ public class StructureLibrary : MonoBehaviour
 
     public static StructureLibrary Instance { get; private set; }
 
+    public float Radius = 3f;
+
     [SerializeField] List<StructureHandler> _structPrefabs = new List<StructureHandler>();
 
     //state

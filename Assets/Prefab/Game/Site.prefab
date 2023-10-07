@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sr: {fileID: 0}
   _currentHealth: 1
-  GeneralSiteType: 0
+  GeneralSiteType: 2
   _currentStructure: {fileID: 0}
 --- !u!60 &7546367121723825059
 PolygonCollider2D:
@@ -76,12 +76,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.70051193, y: -0.33208036}
-      - {x: 0.7828784, y: 0.042386442}
-      - {x: 0.2993556, y: 0.108591646}
-      - {x: -0.28122038, y: 0.108063236}
-      - {x: -0.6860452, y: 0.034481764}
-      - {x: -0.6070992, y: -0.3315734}
+    - - {x: 0.25776356, y: -0.30341315}
+      - {x: 0.7978708, y: -0.0049996004}
+      - {x: -0.0062583103, y: 0.10561494}
+      - {x: -0.74326944, y: -0.008564658}
+      - {x: -0.15729535, y: -0.30315375}
 --- !u!50 &-3157207076861870837
 Rigidbody2D:
   serializedVersion: 4
@@ -115,3 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d5810d31826d64dbf26c015382c9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _neighborLeft: {fileID: 0}
+  _neighborRight: {fileID: 0}
+  _leftHH: {fileID: 0}
+  _rightHH: {fileID: 0}

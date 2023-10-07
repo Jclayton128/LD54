@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7524928715795198771}
   - component: {fileID: -2459108573755269230}
   m_Layer: 7
-  m_Name: Asteroid
+  m_Name: Rock
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: -99825955
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9983dc7745ec48d49a0a699401e26abe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20c21aeefdc4f2a4a8dca549508c21ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.27, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Radius: 0.31
 --- !u!114 &7524928715795198771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21400375657d4bd4db24be6ff59c6768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _asteroidBigToSmall:
+  - {fileID: 21300000, guid: e167461945bce6d4388c361351b9efe1, type: 3}
+  - {fileID: 21300000, guid: c11762204f0b308498f269ae420591c7, type: 3}
+  - {fileID: 21300000, guid: a0511171d20c71d4aa287a6774b03ebe, type: 3}
+  - {fileID: 21300000, guid: 20c21aeefdc4f2a4a8dca549508c21ba, type: 3}
   IsDead: 0
 --- !u!50 &-2459108573755269230
 Rigidbody2D:

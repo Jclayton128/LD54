@@ -66,7 +66,7 @@ public class FarmHandler : MonoBehaviour, IActivatable
             //hook into UI
             if (_factor >= 1)
             {
-                ResourceController.Instance.SpendFood(-1 * _foodYield*10);
+                ResourceController.Instance.SpendFood(-1 * _foodYield);
                 _ps.Emit(_foodYield *2);
                 ResetCrop();
                 //TODO play a crop sound

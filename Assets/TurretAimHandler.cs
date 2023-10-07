@@ -66,7 +66,7 @@ public class TurretAimHandler : MonoBehaviour
     {
         if (Target != null)
         {
-            _trueDir = (Target.transform.position - transform.position).normalized;
+            _trueDir = (Target.transform.position + (Target.Velocity/4f) - transform.position).normalized;
         }
         else
         {

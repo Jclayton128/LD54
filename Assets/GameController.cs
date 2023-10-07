@@ -13,10 +13,13 @@ public class GameController : MonoBehaviour
     //state
     int _attackWavesEndured;
     public int Difficulty => 1 + _attackWavesEndured;
-    float _timeUntilNextAttack;
+    [SerializeField] float _timeUntilNextAttack;
     //float _timeRemainingOnAttack;
     //public float TimeRemainingOnAttack => _timeRemainingOnAttack;
     public float TimeUntilNextAttack => _timeUntilNextAttack;
+
+
+
     //float _attackDuration = 15f;
     float _timeBetweenAttacks_starting = 40f;
     bool _isInGame = false;
@@ -124,6 +127,12 @@ public class GameController : MonoBehaviour
     {
         EndAttackMode();
         Debug.Log($"difficulty now: {Difficulty}");
+    }
+
+    internal void Debug_DelayAttack()
+    {
+        _timeUntilNextAttack = 120f;
+        Debug.Log("Delaying Attack. TTA: " + _timeUntilNextAttack);
     }
 
 

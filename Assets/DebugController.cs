@@ -22,6 +22,10 @@ public class DebugController : MonoBehaviour
         {
             GameController.Instance.Debug_ForceEndAttack();
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            GameController.Instance.Debug_DelayAttack();
+        }
         if (Input.GetKeyDown(KeyCode.D))
         {
             if (GameController.Instance.IsAttackMode)

@@ -5359,7 +5359,7 @@ MonoBehaviour:
   - {fileID: 4400144024735316023}
   - {fileID: 2054690632969199408}
   _timeBetweenStages: 10
-  _timeToHarvest: 5
+  _timeToHarvest: 1
   _foodYield: 0
   _harvestCue: {fileID: 2142047781336576080}
   _timeInStage: 0
